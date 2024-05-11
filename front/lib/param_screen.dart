@@ -1,29 +1,23 @@
 import 'package:flutter/material.dart';
-//import 'dart:convert';
-import 'dart:async';
-// import 'dart:convert';
-// import 'dart:async';
-import 'global_lib.dart' as global;
-import 'package:http/http.dart' as http;
-//import 'package:http/http.dart' as http;
 
 class Param extends StatefulWidget {
-  const Param({Key? key}) : super(key: key);
+  const Param({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ParamPageState createState() => _ParamPageState();
 }
 
 class _ParamPageState extends State<Param> {
   // bool _ispasswordOK = false;
   // bool _isEmailOK = false;
-  final MyEmailController = TextEditingController();
-  final MyPasswordController = TextEditingController();
+  final TextEditingController myemailcontroller = TextEditingController();
+  final TextEditingController mypasswordcontroller = TextEditingController();
   final ButtonStyle style =
         ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
   @override
   void dispose() {
-    MyEmailController.dispose();
+    myemailcontroller.dispose();
     super.dispose();
   }
   Widget build(BuildContext context) {
@@ -628,26 +622,26 @@ class _ParamPageState extends State<Param> {
               ),
             ),
             Center(
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   child: InkWell(
                     onTap: () {
                       Navigator.pushNamed(context, '/Param_suggest');
                     },
-                    onHighlightChanged: (isHighlighted) {
+                    onHighlightChanged: (bool isHighlighted) {
                         // Handle highlight change
                       },
-                      splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                      highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                      splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                      highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                     child: const Row(
-                      children: [
+                      children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+                          padding: EdgeInsets.only(left: 16, right: 8),
                           child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
                               child: Icon(Icons.assistant),
                             ),
                         ),
@@ -658,7 +652,7 @@ class _ParamPageState extends State<Param> {
                             ),
                           ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
+                          padding: EdgeInsets.only(right: 8.0),
                           child:  IconTheme(
                             data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
                             child: Icon(Icons.arrow_forward_ios),
@@ -671,26 +665,26 @@ class _ParamPageState extends State<Param> {
               ),
             ),
             Center(
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   child: InkWell(
                     onTap: () {
                       Navigator.pushNamed(context, '/Param_rules');
                     },
-                    onHighlightChanged: (isHighlighted) {
+                    onHighlightChanged: (bool isHighlighted) {
                         // Handle highlight change
                       },
-                      splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                      highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                      splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                      highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                     child: const Row(
-                      children: [
+                      children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+                          padding: EdgeInsets.only(left: 16, right: 8),
                           child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
                               child: Icon(Icons.info),
                             ),
                         ),
@@ -701,7 +695,7 @@ class _ParamPageState extends State<Param> {
                             ),
                           ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
+                          padding: EdgeInsets.only(right: 8),
                           child:  IconTheme(
                             data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
                             child: Icon(Icons.arrow_forward_ios),
@@ -714,37 +708,37 @@ class _ParamPageState extends State<Param> {
               ),
             ),
             Center(
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   child: InkWell(
                     onTap: () {
                       Navigator.pushNamed(context, '/Param_policy');
                     },
-                    onHighlightChanged: (isHighlighted) {
+                    onHighlightChanged: (bool isHighlighted) {
                         // Handle highlight change
                       },
-                      splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                      highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                      splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                      highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                     child: const Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+                          padding: EdgeInsets.only(left: 16, right: 8),
                           child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
                               child: Icon(Icons.policy),
                             ),
                         ),
                         Expanded(
                             child: Text(
-                              "Politique de confidentialité",
+                              'Politique de confidentialité',
                               style: TextStyle(fontSize: 15),
                             ),
                           ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
+                          padding: EdgeInsets.only(right: 8),
                           child:  IconTheme(
                             data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
                             child: Icon(Icons.arrow_forward_ios),
@@ -760,37 +754,37 @@ class _ParamPageState extends State<Param> {
             const Text('Connexion', style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 116, 116, 116)),),
             const SizedBox(height: 10),
             Center(
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   child: InkWell(
                     onTap: () {
                       // Handle button tap
                     },
-                    onHighlightChanged: (isHighlighted) {
+                    onHighlightChanged: (bool isHighlighted) {
                         // Handle highlight change
                       },
-                      splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                      highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                      splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                      highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                     child: const Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+                          padding: EdgeInsets.only(left: 16, right: 8),
                           child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              data: IconThemeData(color:  Color.fromARGB(255, 138, 138, 138)), // Change the color here
                               child: Icon(Icons.switch_account_sharp),
                             ),
                         ),
                         Expanded(
                             child: Text(
-                              "Changer de compte",
+                              'Changer de compte',
                               style: TextStyle(fontSize: 15),
                             ),
                           ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
+                          padding: EdgeInsets.only(right: 8.0),
                           child:  IconTheme(
                             data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
                             child: Icon(Icons.arrow_forward_ios),
@@ -803,11 +797,11 @@ class _ParamPageState extends State<Param> {
               ),
             ),
             Center(
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   child: InkWell(
                     onTap: () {
                       showModalBottomSheet<void>(
@@ -815,7 +809,7 @@ class _ParamPageState extends State<Param> {
               builder: (BuildContext context) {
                 return Container(
                   height: 200,
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -832,27 +826,27 @@ class _ParamPageState extends State<Param> {
                         Container(
                           width: double.infinity,
                           height: 1,
-                          margin: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
-                          child: Divider(
+                          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+                          child: const Divider(
                             color: Color.fromARGB(255, 238, 238, 238),
                             thickness: 1,
                           ),
                         ),
                         Center(
-                        child: Container(
+                        child: SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: Material(
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: const Color.fromARGB(255, 255, 255, 255),
                             child: InkWell(
                               onTap: () {
                                 Navigator.pushNamed(context, '/');
                               },
-                              onHighlightChanged: (isHighlighted) {
+                              onHighlightChanged: (bool isHighlighted) {
                                   // Handle highlight change
                                 },
-                                splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                                highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                                splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                                highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                               child: const Center(
                                 child:
                                   Text(
@@ -871,27 +865,27 @@ class _ParamPageState extends State<Param> {
                       Container(
                           width: double.infinity,
                           height: 1,
-                          margin: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
-                          child: Divider(
+                          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+                          child: const Divider(
                             color: Color.fromARGB(255, 238, 238, 238),
                             thickness: 1,
                           ),
                         ),
                         Center(
-                        child: Container(
+                        child: SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: Material(
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: const Color.fromARGB(255, 255, 255, 255),
                             child: InkWell(
                               onTap: () {
                                 Navigator.of(context).pop();
                               },
-                              onHighlightChanged: (isHighlighted) {
+                              onHighlightChanged: (bool isHighlighted) {
                                   // Handle highlight change
                                 },
-                                splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                                highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                                splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                                highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                               child: const Center(
                                 child:
                                   Text(
@@ -912,28 +906,28 @@ class _ParamPageState extends State<Param> {
               },
             );
                     },
-                    onHighlightChanged: (isHighlighted) {
+                    onHighlightChanged: (bool isHighlighted) {
                         // Handle highlight change
                       },
-                      splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                      highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                      splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                      highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                     child: const Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+                          padding: EdgeInsets.only(left: 16.0, right: 8.0),
                           child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              data: IconThemeData(color:  Color.fromARGB(255, 138, 138, 138)), // Change the color here
                               child: Icon(Icons.delete_forever),
                             ),
                         ),
                         Expanded(
                             child: Text(
-                              "Supprimer mon compte",
+                              'Supprimer mon compte',
                               style: TextStyle(fontSize: 15),
                             ),
                           ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
+                          padding: EdgeInsets.only(right: 8.0),
                           child:  IconTheme(
                             data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
                             child: Icon(Icons.arrow_forward_ios),
@@ -946,7 +940,7 @@ class _ParamPageState extends State<Param> {
               ),
             ),
             Center(
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: Material(
@@ -958,7 +952,7 @@ class _ParamPageState extends State<Param> {
               builder: (BuildContext context) {
                 return Container(
                   height: 200,
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -975,34 +969,34 @@ class _ParamPageState extends State<Param> {
                         Container(
                           width: double.infinity,
                           height: 1,
-                          margin: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
-                          child: Divider(
+                          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+                          child: const Divider(
                             color: Color.fromARGB(255, 238, 238, 238),
                             thickness: 1,
                           ),
                         ),
                         Center(
-                        child: Container(
+                        child: SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: Material(
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: const Color.fromARGB(255, 255, 255, 255),
                             child: InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, '/');
+                              onTap: () async {
+                                await Navigator.pushNamed(context, '/');
                               },
-                              onHighlightChanged: (isHighlighted) {
+                              onHighlightChanged: (bool isHighlighted) {
                                   // Handle highlight change
                                 },
-                                splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                                highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                                splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                                highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                               child: const Center(
                                 child:
                                   Text(
                                     'Déconnexion',
                                     style: TextStyle(
                                       fontSize: 15,
-                                      color: Color.fromARGB(255, 255, 0, 0)
+                                      color: Color.fromARGB(255, 255, 0, 0),
                                     ),
                                   ),
 
@@ -1014,27 +1008,27 @@ class _ParamPageState extends State<Param> {
                       Container(
                           width: double.infinity,
                           height: 1,
-                          margin: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
-                          child: Divider(
+                          margin: const EdgeInsets.symmetric(horizontal: 8),
+                          child: const Divider(
                             color: Color.fromARGB(255, 238, 238, 238),
                             thickness: 1,
                           ),
                         ),
                         Center(
-                        child: Container(
+                        child: SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: Material(
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: const Color.fromARGB(255, 255, 255, 255),
                             child: InkWell(
                               onTap: () {
                                 Navigator.of(context).pop();
                               },
-                              onHighlightChanged: (isHighlighted) {
+                              onHighlightChanged: (bool isHighlighted) {
                                   // Handle highlight change
                                 },
-                                splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                                highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                                splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                                highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                               child: const Center(
                                 child:
                                   Text(
@@ -1055,28 +1049,28 @@ class _ParamPageState extends State<Param> {
               },
             );
                     },
-                    onHighlightChanged: (isHighlighted) {
+                    onHighlightChanged: (bool isHighlighted) {
                         // Handle highlight change
                       },
-                      splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                      highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                      splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                      highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                     child: const Row(
-                      children: [
+                      children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+                          padding: EdgeInsets.only(left: 16, right: 8),
                           child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
                               child: Icon(Icons.logout),
                             ),
                         ),
                         Expanded(
                             child: Text(
-                              "Déconnexion",
+                              'Déconnexion',
                               style: TextStyle(fontSize: 15),
                             ),
                           ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
+                          padding: EdgeInsets.only(right: 8),
                           child:  IconTheme(
                             data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
                             child: Icon(Icons.arrow_forward_ios),
@@ -1089,7 +1083,7 @@ class _ParamPageState extends State<Param> {
               ),
             ),
             const SizedBox(height: 120),
-            Text("V1.00", style: TextStyle(fontSize: 15, color: Color.fromARGB(255, 39, 39, 39)),),
+            const Text('V1.00', style: TextStyle(fontSize: 15, color: Color.fromARGB(255, 39, 39, 39)),),
             const SizedBox(height: 20),
           ],
         ),
