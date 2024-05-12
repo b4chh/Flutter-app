@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 
+// ignore: public_member_api_docs
 class Trend_art extends StatefulWidget {
+  // ignore: public_member_api_docs
   const Trend_art ({super.key});
 
   @override

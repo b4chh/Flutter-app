@@ -1,7 +1,7 @@
 // import 'package:image_picker/image_picker.dart';
 // import 'package:image_cropper/image_cropper.dart';
 // import 'dart:convert';
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, public_member_api_docs
 
 import 'dart:async';
 

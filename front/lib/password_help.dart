@@ -1,4 +1,6 @@
 //import 'dart:convert';
+// ignore_for_file: public_member_api_docs
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -64,9 +66,9 @@ class _PasswordPageState extends State<Password> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget> [
-            const Text('Trouvez votre compte', style: TextStyle(fontSize: 30, color: Color.fromARGB(255, 255, 255, 255)),),
+            const Text('Trouvez votre compte', style: TextStyle(fontSize: 30,fontFamily: 'Apple2' ,color: Color.fromARGB(255, 255, 255, 255)),),
             const SizedBox(height: 10),
-            const Text('Entrez votre adresse e-mail pour nous aidez à vous retrouver', style: TextStyle(fontSize: 15, color: Color.fromARGB(255, 255, 255, 255)),),
+            const Text('Entrez votre adresse e-mail pour nous aidez à vous retrouver', style: TextStyle(fontSize: 15,fontFamily: 'Apple2', color: Color.fromARGB(255, 255, 255, 255)),),
             const SizedBox(height: 15),
             SizedBox(
             width: 390,
@@ -76,7 +78,7 @@ class _PasswordPageState extends State<Password> {
                   fillColor: const Color.fromARGB(255, 255, 255, 255),
                   filled: true,
                   hintText: 'Email',
-                  hintStyle: const TextStyle(color: Color.fromARGB(255, 184, 184, 184)),
+                  hintStyle: const TextStyle(color: Color.fromARGB(255, 184, 184, 184), fontFamily: 'Apple2'),
                   enabledBorder: OutlineInputBorder(
                     borderSide: const BorderSide(color: Color.fromARGB(255, 255, 255, 255)),
                     borderRadius: BorderRadius.circular(20),
@@ -94,7 +96,7 @@ class _PasswordPageState extends State<Password> {
                   fillColor: const Color.fromARGB(255, 255, 255, 255),
                   filled: true,
                   hintText: 'Nouveau mot de passe',
-                  hintStyle: const TextStyle(color: Color.fromARGB(255, 184, 184, 184)),
+                  hintStyle: const TextStyle(color: Color.fromARGB(255, 184, 184, 184), fontFamily: 'Apple2'),
                   enabledBorder: OutlineInputBorder(
                     borderSide: const BorderSide(color: Color.fromARGB(255, 255, 255, 255)),
                     borderRadius: BorderRadius.circular(20),
@@ -112,8 +114,8 @@ class _PasswordPageState extends State<Password> {
                 decoration: InputDecoration(
                   fillColor: const Color.fromARGB(255, 255, 255, 255),
                   filled: true,
-                  hintText: 'confirmation mot de passe',
-                  hintStyle: const TextStyle(color: Color.fromARGB(255, 184, 184, 184)),
+                  hintText: 'Confirmation mot de passe',
+                  hintStyle: const TextStyle(color: Color.fromARGB(255, 184, 184, 184), fontFamily: 'Apple2'),
                   enabledBorder: OutlineInputBorder(
                     borderSide: const BorderSide(color: Color.fromARGB(255, 255, 255, 255)),
                     borderRadius: BorderRadius.circular(20),
@@ -135,7 +137,7 @@ class _PasswordPageState extends State<Password> {
                 color: Color.fromARGB(255, 0, 0, 0),
               ),
               animationDuration: Duration.zero,
-              backgroundColor: const Color.fromARGB(255, 164, 134, 245),
+              backgroundColor: const Color.fromARGB(255, 0, 0, 0),
               //onPrimary: Color.fromARGB(255, 50, 114, 209),
             ),
             onPressed: () async {
@@ -178,7 +180,7 @@ class _PasswordPageState extends State<Password> {
                   mypasswordcontroller.clear();
                 }
             },
-            child: const Text(' trouver le compte ', style: TextStyle(fontSize: 15),),
+            child: const Text(' Changer de mot de passe ', style: TextStyle(fontSize: 15, fontFamily: 'Apple2', color: Color.fromARGB(255, 255, 255, 255)),),
           ),
           const SizedBox(height: 15),
           FloatingActionButton(

@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 // import 'package:testing_flutter/home_screen.dart';
 // import 'global_lib.dart' as global;
 
+// ignore: public_member_api_docs
 class Login extends StatefulWidget {
+  // ignore: public_member_api_docs
   const Login({super.key});
 
   @override

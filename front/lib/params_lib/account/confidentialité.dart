@@ -9,7 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 //import 'package:http/http.dart' as http;
 
+// ignore: public_member_api_docs
 class Passwordchange extends StatefulWidget {
+  // ignore: public_member_api_docs
   const Passwordchange({super.key});
 
   @override
@@ -25,7 +27,7 @@ class Passwordchange extends StatefulWidget {
 //   }
 // }
 
-// ignore: always_specify_types
+// ignore: always_specify_types, public_member_api_docs
 Future<http.Response> makePostRequest(email, password, passwordconf) async {
   final Uri url = Uri.parse('http://192.168.1.94:3000/auth/updatepass?email=$email&password=$password&confirmPass=$passwordconf');
   final Map<String, String> headers = <String, String>{'Content-type': 'application/json'};

@@ -1,3 +1,5 @@
+// ignore_for_file: public_member_api_docs
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -414,7 +416,7 @@ class _ParamPageState extends State<Param> {
                   color: const Color.fromARGB(255, 255, 255, 255),
                   child: InkWell(
                     onTap: () {
-                      // Handle button tap
+                      unawaited(Navigator.pushNamed(context, '/Delivery_data'));
                     },
                     onHighlightChanged: (bool isHighlighted) {
                         // Handle highlight change

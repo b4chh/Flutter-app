@@ -1,11 +1,12 @@
 //import 'dart:convert';
+// ignore_for_file: public_member_api_docs, camel_case_types
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 // import 'dart:convert';
 // import 'dart:async';
 import 'package:http/http.dart' as http;
-// ignore: camel_case_types
 class Param_help extends StatefulWidget {
   const Param_help({super.key});
 

@@ -1,3 +1,5 @@
+// ignore_for_file: public_member_api_docs
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -64,7 +66,7 @@ class _FirstScreen extends State<FirstScreen> {
             width: 300,
             height: 300,
           ),
-          const SizedBox(height: 130),
+          const SizedBox(height: 90),
           // ElevatedButton(
           //   style: ElevatedButton.styleFrom(
           //     shape: RoundedRectangleBorder(
@@ -95,7 +97,7 @@ class _FirstScreen extends State<FirstScreen> {
                   fillColor: const Color.fromARGB(255, 0, 0, 0),
                   filled: true,
                   hintText: 'Email',
-                  hintStyle: const TextStyle(color: Color.fromARGB(255, 184, 184, 184), fontFamily: 'Font'),
+                  hintStyle: const TextStyle(color: Color.fromARGB(255, 184, 184, 184), fontFamily: 'Apple2'),
                   enabledBorder: OutlineInputBorder(
                     borderSide: const BorderSide(color: Color.fromARGB(255, 255, 255, 255)),
                     borderRadius: BorderRadius.circular(20),
@@ -116,7 +118,7 @@ class _FirstScreen extends State<FirstScreen> {
                   fillColor: const Color.fromARGB(255, 0, 0, 0),
                   filled: true,
                   hintText: 'Mot de passe',
-                  hintStyle: const TextStyle(color: Color.fromARGB(255, 184, 184, 184), fontFamily: 'Font'),
+                  hintStyle: const TextStyle(color: Color.fromARGB(255, 184, 184, 184), fontFamily: 'Apple2'),
                 enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(color: Color.fromARGB(255, 255, 255, 255)),
                   borderRadius: BorderRadius.circular(20),
@@ -132,13 +134,13 @@ class _FirstScreen extends State<FirstScreen> {
                 borderRadius: BorderRadius.circular(20), //Définir le rayon du bord arrondi
               ),
               side: const BorderSide(
-                color: Color.fromARGB(255, 176, 190, 242),
+                color: Color.fromARGB(255, 255, 255, 255),
               ),
               textStyle: const TextStyle(
                 color: Color.fromARGB(255, 255, 255, 255),
               ),
               animationDuration: Duration.zero,
-              backgroundColor: Color.fromARGB(255, 255, 255, 255),
+              backgroundColor: const Color.fromARGB(255, 0, 0, 0),
               //onPrimary: Color.fromARGB(255, 50, 114, 209),
             ),
             onPressed: () async {
@@ -174,15 +176,15 @@ class _FirstScreen extends State<FirstScreen> {
             // onPressed: () {
             //   Navigator.pushNamed(context, '/Home');
             // },
-            child: const Text(' Se connecter ', style: TextStyle(fontSize: 16, fontFamily: 'Font'),),
+            child: const Text(' Se connecter ', style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 255, 255, 255), fontFamily: 'Apple2'),),
           ),
           TextButton(
-            child: const Text('Mot de passe oublié ?',  style: TextStyle(color :Color.fromARGB(255, 255, 255, 255), fontFamily: 'Font',)),
+            child: const Text('Mot de passe oublié ?',  style: TextStyle(color :Color.fromARGB(255, 255, 255, 255), fontFamily: 'Apple2',)),
             onPressed: () async {
               await Navigator.pushNamed(context, '/PasswordHelp');
             },
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 20),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               minimumSize: const Size(370, 35),
@@ -196,13 +198,13 @@ class _FirstScreen extends State<FirstScreen> {
                 color: Color.fromARGB(255, 0, 0, 0),
               ),
               animationDuration: Duration.zero,
-              backgroundColor: Color.fromARGB(255, 255, 255, 255),
+              backgroundColor: const Color.fromARGB(255, 0, 0, 0),
               //onPrimary: Color.fromARGB(255, 50, 114, 209),
             ),
             onPressed: () async {
               await Navigator.pushNamed(context, '/Register');
             },
-            child: const Text(' Créer un compte ', style: TextStyle(fontSize: 15, fontFamily: 'Font'),),
+            child: const Text(' Créer un compte ', style: TextStyle(fontSize: 15, color: Color.fromARGB(255, 255, 255, 255), fontFamily: 'Apple2'),),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -215,7 +217,7 @@ class _FirstScreen extends State<FirstScreen> {
               textStyle: const TextStyle(
                 color: Color.fromARGB(255, 255, 255, 255),
               ),
-              backgroundColor: Color.fromARGB(255, 255, 255, 255),
+              backgroundColor: const Color.fromARGB(255, 0, 0, 0),
               //onPrimary: Color.fromARGB(255, 50, 114, 209),
             ),
             onPressed: () async {
@@ -223,7 +225,15 @@ class _FirstScreen extends State<FirstScreen> {
               print('skip');
               await Navigator.pushNamed(context, '/Home');
             },
-            child: const Text('SKIP'),
+            child: const Text('SKIP',style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+          ),
+          const SizedBox(height: 15),
+          FloatingActionButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+            child: const Icon(Icons.arrow_back),
           ),
         ],
         ),
