@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart';
-//import 'dart:convert';
+// ignore_for_file: file_names
+
 import 'dart:async';
+
+import 'package:flutter/material.dart';
 // import 'dart:convert';
 // import 'dart:async';
 //import '../../global_lib.dart' as global;
@@ -8,9 +10,10 @@ import 'package:http/http.dart' as http;
 //import 'package:http/http.dart' as http;
 
 class Passwordchange extends StatefulWidget {
-  const Passwordchange({Key? key}) : super(key: key);
+  const Passwordchange({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _PasswordchangePageState createState() => _PasswordchangePageState();
 }
 
@@ -22,52 +25,54 @@ class Passwordchange extends StatefulWidget {
 //   }
 // }
 
+// ignore: always_specify_types
 Future<http.Response> makePostRequest(email, password, passwordconf) async {
-  final url = Uri.parse('http://192.168.1.94:3000/auth/updatepass?email=$email&password=$password&confirmPass=$passwordconf');
-  final headers = {"Content-type": "application/json"};
-  final response = await http.patch(url, headers: headers);
+  final Uri url = Uri.parse('http://192.168.1.94:3000/auth/updatepass?email=$email&password=$password&confirmPass=$passwordconf');
+  final Map<String, String> headers = <String, String>{'Content-type': 'application/json'};
+  final http.Response response = await http.patch(url, headers: headers);
   return response;
 }
 
 class _PasswordchangePageState extends State<Passwordchange> {
-  final MyEmailController = TextEditingController();
-  final MyPasswordController = TextEditingController();
-  final MyPasswordconfController = TextEditingController();
+  final TextEditingController myemailcontroller = TextEditingController();
+  final TextEditingController mypasswordcontroller = TextEditingController();
+  final TextEditingController mypasswordconfcontroller = TextEditingController();
 
   final ButtonStyle style =
         ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
-    MyEmailController.dispose();
+    myemailcontroller.dispose();
     super.dispose();
   }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 235, 235, 235),
+      backgroundColor: const Color.fromARGB(255, 235, 235, 235),
       resizeToAvoidBottomInset: false,
       body: Stack(
-        children: [
+        children: <Widget>[
       Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget> [
-            Text('Changer de mot de passe', style: TextStyle(fontSize: 30, color: Color.fromARGB(255, 0, 0, 0)),),
+            const Text('Changer de mot de passe', style: TextStyle(fontSize: 30, color: Color.fromARGB(255, 0, 0, 0)),),
             const SizedBox(height: 10),
-            Text('entrez votre email et votre nouveau mot de passe', style: TextStyle(fontSize: 15, color: Color.fromARGB(255, 0, 0, 0)),),
+            const Text('entrez votre email et votre nouveau mot de passe', style: TextStyle(fontSize: 15, color: Color.fromARGB(255, 0, 0, 0)),),
             const SizedBox(height: 15),
             SizedBox(
             width: 390,
             child: TextField(
-                controller: MyEmailController,
+                controller: myemailcontroller,
                 decoration: InputDecoration(
-                  fillColor: Color.fromARGB(255, 255, 255, 255),
+                  fillColor: const Color.fromARGB(255, 255, 255, 255),
                   filled: true,
-                  hintText: "Email",
-                  hintStyle: TextStyle(color: Color.fromARGB(255, 184, 184, 184)),
+                  hintText: 'Email',
+                  hintStyle: const TextStyle(color: Color.fromARGB(255, 184, 184, 184)),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 1, color: Color.fromARGB(255, 255, 255, 255)),
+                    borderSide: const BorderSide(color: Color.fromARGB(255, 255, 255, 255)),
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
@@ -78,14 +83,14 @@ class _PasswordchangePageState extends State<Passwordchange> {
             width: 390,
             child: TextField(
               obscureText: true,
-                controller: MyPasswordController,
+                controller: mypasswordcontroller,
                 decoration: InputDecoration(
-                  fillColor: Color.fromARGB(255, 255, 255, 255),
+                  fillColor: const Color.fromARGB(255, 255, 255, 255),
                   filled: true,
-                  hintText: "Nouveau mot de passe",
-                  hintStyle: TextStyle(color: Color.fromARGB(255, 184, 184, 184)),
+                  hintText: 'Nouveau mot de passe',
+                  hintStyle: const TextStyle(color: Color.fromARGB(255, 184, 184, 184)),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 1, color: Color.fromARGB(255, 255, 255, 255)),
+                    borderSide: const BorderSide(color: Color.fromARGB(255, 255, 255, 255)),
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
@@ -96,14 +101,14 @@ class _PasswordchangePageState extends State<Passwordchange> {
             width: 390,
             child: TextField(
               obscureText: true,
-                controller: MyPasswordconfController,
+                controller: mypasswordconfcontroller,
                 decoration: InputDecoration(
-                  fillColor: Color.fromARGB(255, 255, 255, 255),
+                  fillColor: const Color.fromARGB(255, 255, 255, 255),
                   filled: true,
-                  hintText: "confirmation mot de passe",
-                  hintStyle: TextStyle(color: Color.fromARGB(255, 184, 184, 184)),
+                  hintText: 'confirmation mot de passe',
+                  hintStyle: const TextStyle(color: Color.fromARGB(255, 184, 184, 184)),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 1, color: Color.fromARGB(255, 255, 255, 255)),
+                    borderSide: const BorderSide(color: Color.fromARGB(255, 255, 255, 255)),
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
@@ -112,48 +117,40 @@ class _PasswordchangePageState extends State<Passwordchange> {
             const SizedBox(height: 15),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              minimumSize: Size(370, 35),
+              minimumSize: const Size(370, 35),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20), //Définir le rayon du bord arrondi
               ),
-              side: BorderSide(
-                width: 1.0,
+              side: const BorderSide(
                 color: Color.fromARGB(255, 255, 255, 255),
-                style: BorderStyle.solid,
               ),
-              textStyle: TextStyle(
+              textStyle: const TextStyle(
                 color: Color.fromARGB(255, 0, 0, 0),
               ),
               animationDuration: Duration.zero,
-              backgroundColor: Color.fromARGB(255, 164, 134, 245),
+              backgroundColor: const Color.fromARGB(255, 164, 134, 245),
               //onPrimary: Color.fromARGB(255, 50, 114, 209),
             ),
             onPressed: () async {
-                if (MyEmailController.text.contains("@") && MyEmailController.text.contains(".")
-                && MyEmailController.text.isNotEmpty && MyPasswordController.text == MyPasswordconfController.text)
+                if (myemailcontroller.text.contains('@') && myemailcontroller.text.contains('.')
+                && myemailcontroller.text.isNotEmpty && mypasswordcontroller.text == mypasswordconfcontroller.text)
                  {
-                  print(MyEmailController.text);
-                  print(MyPasswordController.text);
-                  print(MyPasswordconfController.text);
-                  final response = await makePostRequest(MyEmailController.text, MyPasswordController.text, MyPasswordconfController.text);
-                  print(response.body);
-                  print(response.statusCode);
+                  final http.Response response = await makePostRequest(myemailcontroller.text, mypasswordcontroller.text, mypasswordconfcontroller.text);
                   if (response.statusCode == 200) {
+                    // ignore: use_build_context_synchronously
                     Navigator.pop(context);
                   }
                   if (response.statusCode == 500) {
-                    print("Email or password is incorrect111");
                   }
                   else {
-                    MyEmailController.clear();
-                    MyPasswordController.clear();
-                    MyPasswordconfController.clear();
+                    myemailcontroller.clear();
+                    mypasswordcontroller.clear();
+                    mypasswordconfcontroller.clear();
                   }
                 }
                 else {
-                  print("Email or password is incorrect");
-                  MyEmailController.clear();
-                  MyPasswordController.clear();
+                  myemailcontroller.clear();
+                  mypasswordcontroller.clear();
                 }
             },
             child: const Text('Changer de mot de passe', style: TextStyle(fontSize: 15),),
@@ -163,8 +160,8 @@ class _PasswordchangePageState extends State<Passwordchange> {
             onPressed: () {
               Navigator.pop(context);
             },
+            backgroundColor: const Color.fromARGB(255, 164, 134, 245),
             child: const Icon(Icons.arrow_back),
-            backgroundColor: Color.fromARGB(255, 164, 134, 245),
           ),
           ],
         ),

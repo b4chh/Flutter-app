@@ -6,9 +6,10 @@ import 'package:flutter/material.dart';
 // import 'global_lib.dart' as global;
 
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _LoginPageState createState() => _LoginPageState();
 }
 
@@ -31,21 +32,22 @@ class Login extends StatefulWidget {
 class _LoginPageState extends State<Login> {
   // bool _ispasswordOK = false;
   // bool _isEmailOK = false;
-  final MyEmailController = TextEditingController();
-  final MyPasswordController = TextEditingController();
+  final TextEditingController myemailcontroller = TextEditingController();
+  final TextEditingController mypasswordcontroller = TextEditingController();
   final ButtonStyle style =
         ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
   @override
   void dispose() {
-    MyEmailController.dispose();
+    myemailcontroller.dispose();
     super.dispose();
   }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       resizeToAvoidBottomInset: false,
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget> [
@@ -55,7 +57,7 @@ class _LoginPageState extends State<Login> {
             const Text('Sign in', style: TextStyle(fontSize: 25, color: Color.fromARGB(255, 0, 0, 0)),),
             const SizedBox(height: 15),
             TextField(
-              controller: MyEmailController,
+              controller: myemailcontroller,
               decoration: const InputDecoration(
                 hintText: 'Email',
                 border: OutlineInputBorder(),
@@ -68,7 +70,7 @@ class _LoginPageState extends State<Login> {
               obscureText: true,
               enableSuggestions: false,
               autocorrect: false,
-              controller: MyPasswordController,
+              controller: mypasswordcontroller,
               decoration: const InputDecoration(
                 hintText: 'Password',
                 border: OutlineInputBorder(),
@@ -77,39 +79,39 @@ class _LoginPageState extends State<Login> {
             const SizedBox(height: 30),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-              backgroundColor: Color.fromARGB(255, 0, 0, 0),
+              backgroundColor: const Color.fromARGB(255, 0, 0, 0),
             ),
-            onPressed: () {Navigator.pushNamed(context, '/Home');},
+            onPressed: () async {await Navigator.pushNamed(context, '/Home');},
             //   onPressed: () async {
-            //     if (MyEmailController.text.contains("@") && MyEmailController.text.contains(".")
-            //     && MyPasswordController.text.length >= 8 && MyEmailController.text.isNotEmpty)
+            //     if (myemailcontroller.text.contains("@") && myemailcontroller.text.contains(".")
+            //     && mypasswordcontroller.text.length >= 8 && myemailcontroller.text.isNotEmpty)
             //      {
-            //       final response = await makePostRequest(MyEmailController.text, MyPasswordController.text);
+            //       final response = await makePostRequest(myemailcontroller.text, mypasswordcontroller.text);
             //       print(response.body);
             //       if (response.body == "OK") {
-            //         global.email = MyEmailController.text;
+            //         global.email = myemailcontroller.text;
             //         Navigator.pushNamed(context, '/Home');
             //       }
             //       else {
-            //         MyEmailController.clear();
-            //         MyPasswordController.clear();
+            //         myemailcontroller.clear();
+            //         mypasswordcontroller.clear();
             //       }
             //     }
             //     else {
             //       print("Email or password is incorrect");
-            //       MyEmailController.clear();
-            //       MyPasswordController.clear();
+            //       myemailcontroller.clear();
+            //       mypasswordcontroller.clear();
             //     }
             // },
             child: const Text('Submit'),
           ),
           const SizedBox(height: 20),
           FloatingActionButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/');
+            onPressed: () async {
+              await Navigator.pushNamed(context, '/');
             },
+            backgroundColor: const Color.fromARGB(255, 0, 0, 0),
             child: const Icon(Icons.arrow_back),
-            backgroundColor: Color.fromARGB(255, 0, 0, 0),
           ),
           ],
         ),

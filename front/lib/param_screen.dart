@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class Param extends StatefulWidget {
@@ -20,19 +22,20 @@ class _ParamPageState extends State<Param> {
     myemailcontroller.dispose();
     super.dispose();
   }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 235, 235, 235),
+      backgroundColor: const Color.fromARGB(255, 235, 235, 235),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
-        backgroundColor: Color.fromARGB(255, 235, 235, 235),
-        iconTheme: IconThemeData(
-            color: const Color.fromARGB(255, 0, 0, 0), // Changer la couleur ici
+        backgroundColor: const Color.fromARGB(255, 235, 235, 235),
+        iconTheme: const IconThemeData(
+            color: Color.fromARGB(255, 0, 0, 0), // Changer la couleur ici
           ),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios),
+            icon: const Icon(Icons.arrow_back_ios),
             onPressed: () {
               Navigator.pop(context);
               Navigator.pop(context);
@@ -42,7 +45,7 @@ class _ParamPageState extends State<Param> {
         title: const Text('Paramètres et confidentialité', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Color.fromARGB(255, 0, 0, 0)),),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8),
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget> [
@@ -54,26 +57,26 @@ class _ParamPageState extends State<Param> {
             const Text('Compte', style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 116, 116, 116)),),
             const SizedBox(height: 10),
             Center(
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   child: InkWell(
                     onTap: () {
                       // Handle button tap
                     },
-                    onHighlightChanged: (isHighlighted) {
+                    onHighlightChanged: (bool isHighlighted) {
                         // Handle highlight change
                       },
-                      splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                      highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                      splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                      highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                     child: const Row(
-                      children: [
+                      children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+                          padding: EdgeInsets.only(left: 16, right: 8),
                           child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              data: IconThemeData(color:  Color.fromARGB(255, 138, 138, 138)), // Change the color here
                               child: Icon(Icons.account_circle_outlined),
                             ),
                           ),
@@ -84,7 +87,7 @@ class _ParamPageState extends State<Param> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
+                          padding: EdgeInsets.only(right: 8),
                           child:  IconTheme(
                             data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
                             child: Icon(Icons.arrow_forward_ios),
@@ -97,26 +100,26 @@ class _ParamPageState extends State<Param> {
               ),
             ),
             Center(
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   child: InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/Changepswd');
+                    onTap: () async {
+                      await Navigator.pushNamed(context, '/Changepswd');
                     },
-                    onHighlightChanged: (isHighlighted) {
+                    onHighlightChanged: (bool isHighlighted) {
                         // Handle highlight change
                       },
-                      splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                      highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                      splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                      highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                     child: const Row(
-                      children: [
+                      children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+                          padding: EdgeInsets.only(left: 16, right: 8),
                           child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
                               child: Icon(Icons.lock),
                             ),
                           ),
@@ -127,489 +130,7 @@ class _ParamPageState extends State<Param> {
                             ),
                           ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child:  IconTheme(
-                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
-                            child: Icon(Icons.arrow_forward_ios),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                width: double.infinity,
-                height: 50,
-                child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  child: InkWell(
-                    onTap: () {
-                      // Handle button tap
-                    },
-                    onHighlightChanged: (isHighlighted) {
-                        // Handle highlight change
-                      },
-                      splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                      highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
-                    child: const Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
-                          child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
-                              child: Icon(Icons.shield),
-                            ),
-                        ),
-                        Expanded(
-                            child: Text(
-                              'Sécurité',
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child:  IconTheme(
-                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
-                            child: Icon(Icons.arrow_forward_ios),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                width: double.infinity,
-                height: 50,
-                child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  child: InkWell(
-                    onTap: () {
-                      // Handle button tap
-                    },
-                    onHighlightChanged: (isHighlighted) {
-                      // Handle highlight change
-                    },
-                    splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                    highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
-                    child: const Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
-                          child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
-                              child: Icon(Icons.share),
-                            ),
-                        ),
-                        Expanded(
-                            child: Text(
-                              'Partager mon profile',
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child:  IconTheme(
-                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
-                            child: Icon(Icons.arrow_forward_ios),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                width: double.infinity,
-                height: 50,
-                child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  child: InkWell(
-                    onTap: () {
-                      // Handle button tap
-                    },
-                    onHighlightChanged: (isHighlighted) {
-                      // Handle highlight change
-                    },
-                    splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                    highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
-                    child: const Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
-                          child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
-                              child: Icon(Icons.work),
-                            ),
-                        ),
-                        Expanded(
-                            child: Text(
-                              'Type de compte et outils',
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child:  IconTheme(
-                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
-                            child: Icon(Icons.arrow_forward_ios),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            const Text('Comptenu et affichage', style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 116, 116, 116)),),
-            const SizedBox(height: 10),
-            Center(
-              child: Container(
-                width: double.infinity,
-                height: 50,
-                child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  child: InkWell(
-                    onTap: () {
-                      // Handle button tap
-                    },
-                    onHighlightChanged: (isHighlighted) {
-                        // Handle highlight change
-                      },
-                      splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                      highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
-                    child: const Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
-                          child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
-                              child: Icon(Icons.notification_important),
-                            ),
-                        ),
-                        Expanded(
-                            child: Text(
-                              'Notification',
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child:  IconTheme(
-                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
-                            child: Icon(Icons.arrow_forward_ios),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                width: double.infinity,
-                height: 50,
-                child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  child: InkWell(
-                    onTap: () {
-                      // Handle button tap
-                    },
-                    onHighlightChanged: (isHighlighted) {
-                        // Handle highlight change
-                      },
-                      splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                      highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
-                    child: const Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
-                          child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
-                              child: Icon(Icons.type_specimen),
-                            ),
-                        ),
-                        Expanded(
-                            child: Text(
-                              'Langue',
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child:  IconTheme(
-                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
-                            child: Icon(Icons.arrow_forward_ios),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                width: double.infinity,
-                height: 50,
-                child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  child: InkWell(
-                    onTap: () {
-                      // Handle button tap
-                    },
-                    onHighlightChanged: (isHighlighted) {
-                        // Handle highlight change
-                      },
-                      splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                      highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
-                    child: const Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
-                          child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
-                              child: Icon(Icons.dark_mode),
-                            ),
-                        ),
-                        Expanded(
-                            child: Text(
-                              'Affichage',
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child:  IconTheme(
-                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
-                            child: Icon(Icons.arrow_forward_ios),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 15),
-            const Text("Informations d'achat", style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 116, 116, 116)),),
-            const SizedBox(height: 10),
-            Center(
-              child: Container(
-                width: double.infinity,
-                height: 50,
-                child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  child: InkWell(
-                    onTap: () {
-                      // Handle button tap
-                    },
-                    onHighlightChanged: (isHighlighted) {
-                        // Handle highlight change
-                      },
-                      splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                      highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
-                    child: const Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
-                          child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
-                              child: Icon(Icons.local_shipping),
-                            ),
-                        ),
-                        Expanded(
-                            child: Text(
-                              'Information de livraison',
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child:  IconTheme(
-                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
-                            child: Icon(Icons.arrow_forward_ios),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                width: double.infinity,
-                height: 50,
-                child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  child: InkWell(
-                    onTap: () {
-                      // Handle button tap
-                    },
-                    onHighlightChanged: (isHighlighted) {
-                        // Handle highlight change
-                      },
-                      splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                      highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
-                    child: const Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
-                          child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
-                              child: Icon(Icons.payment),
-                            ),
-                        ),
-                        Expanded(
-                            child: Text(
-                              'information de paiement',
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child:  IconTheme(
-                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
-                            child: Icon(Icons.arrow_forward_ios),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                width: double.infinity,
-                height: 50,
-                child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  child: InkWell(
-                    onTap: () {
-                      // Handle button tap
-                    },
-                    onHighlightChanged: (isHighlighted) {
-                        // Handle highlight change
-                      },
-                      splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                      highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
-                    child: const Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
-                          child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
-                              child: Icon(Icons.history),
-                            ),
-                        ),
-                        Expanded(
-                            child: Text(
-                              'Historique des achats',
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child:  IconTheme(
-                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
-                            child: Icon(Icons.arrow_forward_ios),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            const Text('Assistance', style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 116, 116, 116)),),
-            const SizedBox(height: 10),
-            Center(
-              child: Container(
-                width: double.infinity,
-                height: 50,
-                child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/Param_help');
-                    },
-                    onHighlightChanged: (isHighlighted) {
-                        // Handle highlight change
-                      },
-                      splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                      highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
-                    child: const Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
-                          child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
-                              child: Icon(Icons.help),
-                            ),
-                        ),
-                        Expanded(
-                            child: Text(
-                              "Obtenir de l'aide",
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child:  IconTheme(
-                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
-                            child: Icon(Icons.arrow_forward_ios),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                width: double.infinity,
-                height: 50,
-                child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/Param_problem');
-                    },
-                    onHighlightChanged: (isHighlighted) {
-                        // Handle highlight change
-                      },
-                      splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                      highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
-                    child: const Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0, right: 8.0),
-                          child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
-                              child: Icon(Icons.report),
-                            ),
-                        ),
-                        Expanded(
-                            child: Text(
-                              "Signaler un problème",
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
+                          padding: EdgeInsets.only(right: 8),
                           child:  IconTheme(
                             data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
                             child: Icon(Icons.arrow_forward_ios),
@@ -629,6 +150,490 @@ class _ParamPageState extends State<Param> {
                   color: const Color.fromARGB(255, 255, 255, 255),
                   child: InkWell(
                     onTap: () {
+                      // Handle button tap
+                    },
+                    onHighlightChanged: (bool isHighlighted) {
+                        // Handle highlight change
+                      },
+                      splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                      highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                    child: const Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 16, right: 8),
+                          child: IconTheme(
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              child: Icon(Icons.shield),
+                            ),
+                        ),
+                        Expanded(
+                            child: Text(
+                              'Sécurité',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 8),
+                          child:  IconTheme(
+                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
+                            child: Icon(Icons.arrow_forward_ios),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: Material(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  child: InkWell(
+                    onTap: () {
+                      // Handle button tap
+                    },
+                    onHighlightChanged: (bool isHighlighted) {
+                      // Handle highlight change
+                    },
+                    splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                    highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                    child: const Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 16, right: 8),
+                          child: IconTheme(
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              child: Icon(Icons.share),
+                            ),
+                        ),
+                        Expanded(
+                            child: Text(
+                              'Partager mon profile',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 8),
+                          child:  IconTheme(
+                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
+                            child: Icon(Icons.arrow_forward_ios),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: Material(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  child: InkWell(
+                    onTap: () {
+                      // Handle button tap
+                    },
+                    onHighlightChanged: (bool isHighlighted) {
+                      // Handle highlight change
+                    },
+                    splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                    highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                    child: const Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 16, right: 8),
+                          child: IconTheme(
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              child: Icon(Icons.work),
+                            ),
+                        ),
+                        Expanded(
+                            child: Text(
+                              'Type de compte et outils',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 8),
+                          child:  IconTheme(
+                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
+                            child: Icon(Icons.arrow_forward_ios),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            const Text('Comptenu et affichage', style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 116, 116, 116)),),
+            const SizedBox(height: 10),
+            Center(
+              child: SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: Material(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  child: InkWell(
+                    onTap: () {
+                      // Handle button tap
+                    },
+                    onHighlightChanged: (bool isHighlighted) {
+                        // Handle highlight change
+                      },
+                      splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                      highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                    child: const Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 16, right: 8),
+                          child: IconTheme(
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              child: Icon(Icons.notification_important),
+                            ),
+                        ),
+                        Expanded(
+                            child: Text(
+                              'Notification',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 8),
+                          child:  IconTheme(
+                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
+                            child: Icon(Icons.arrow_forward_ios),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: Material(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  child: InkWell(
+                    onTap: () {
+                      // Handle button tap
+                    },
+                    onHighlightChanged: (bool isHighlighted) {
+                        // Handle highlight change
+                      },
+                      splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                      highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                    child: const Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 16, right: 8),
+                          child: IconTheme(
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              child: Icon(Icons.type_specimen),
+                            ),
+                        ),
+                        Expanded(
+                            child: Text(
+                              'Langue',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 8),
+                          child:  IconTheme(
+                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
+                            child: Icon(Icons.arrow_forward_ios),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: Material(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  child: InkWell(
+                    onTap: () {
+                      // Handle button tap
+                    },
+                    onHighlightChanged: (bool isHighlighted) {
+                        // Handle highlight change
+                      },
+                      splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                      highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                    child: const Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 16, right: 8),
+                          child: IconTheme(
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              child: Icon(Icons.dark_mode),
+                            ),
+                        ),
+                        Expanded(
+                            child: Text(
+                              'Affichage',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 8),
+                          child:  IconTheme(
+                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
+                            child: Icon(Icons.arrow_forward_ios),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 15),
+            const Text("Informations d'achat", style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 116, 116, 116)),),
+            const SizedBox(height: 10),
+            Center(
+              child: SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: Material(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  child: InkWell(
+                    onTap: () {
+                      // Handle button tap
+                    },
+                    onHighlightChanged: (bool isHighlighted) {
+                        // Handle highlight change
+                      },
+                      splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                      highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                    child: const Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 16, right: 8),
+                          child: IconTheme(
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              child: Icon(Icons.local_shipping),
+                            ),
+                        ),
+                        Expanded(
+                            child: Text(
+                              'Information de livraison',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 8),
+                          child:  IconTheme(
+                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
+                            child: Icon(Icons.arrow_forward_ios),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: Material(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  child: InkWell(
+                    onTap: () {
+                      // Handle button tap
+                    },
+                    onHighlightChanged: (bool isHighlighted) {
+                        // Handle highlight change
+                      },
+                      splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                      highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                    child: const Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 16, right: 8),
+                          child: IconTheme(
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              child: Icon(Icons.payment),
+                            ),
+                        ),
+                        Expanded(
+                            child: Text(
+                              'information de paiement',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 8),
+                          child:  IconTheme(
+                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
+                            child: Icon(Icons.arrow_forward_ios),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: Material(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  child: InkWell(
+                    onTap: () {
+                      // Handle button tap
+                    },
+                    onHighlightChanged: (bool isHighlighted) {
+                        // Handle highlight change
+                      },
+                      splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                      highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                    child: const Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 16, right: 8),
+                          child: IconTheme(
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              child: Icon(Icons.history),
+                            ),
+                        ),
+                        Expanded(
+                            child: Text(
+                              'Historique des achats',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 8),
+                          child:  IconTheme(
+                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
+                            child: Icon(Icons.arrow_forward_ios),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            const Text('Assistance', style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 116, 116, 116)),),
+            const SizedBox(height: 10),
+            Center(
+              child: SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: Material(
+                  // ignore: prefer_const_constructors
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  child: InkWell(
+                    onTap: () async {
+                      unawaited(Navigator.pushNamed(context, '/Param_help'));
+                    },
+                    onHighlightChanged: (bool isHighlighted) {
+                        // Handle highlight change
+                      },
+                      splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                      highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                    child: const Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 16, right: 8),
+                          child: IconTheme(
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              child: Icon(Icons.help),
+                            ),
+                        ),
+                        Expanded(
+                            child: Text(
+                              "Obtenir de l'aide",
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 8),
+                          child:  IconTheme(
+                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
+                            child: Icon(Icons.arrow_forward_ios),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: Material(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  child: InkWell(
+                    onTap: () async {
+                      unawaited(Navigator.pushNamed(context, '/Param_problem'));
+                    },
+                    onHighlightChanged: (bool isHighlighted) {
+                        // Handle highlight change
+                      },
+                      splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                      highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                    child: const Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 16, right: 8),
+                          child: IconTheme(
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              child: Icon(Icons.report),
+                            ),
+                        ),
+                        Expanded(
+                            child: Text(
+                              'Signaler un problème',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 8),
+                          child:  IconTheme(
+                            data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
+                            child: Icon(Icons.arrow_forward_ios),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: Material(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  child: InkWell(
+                    onTap: () {
+                      // ignore: discarded_futures
                       Navigator.pushNamed(context, '/Param_suggest');
                     },
                     onHighlightChanged: (bool isHighlighted) {
@@ -652,7 +657,7 @@ class _ParamPageState extends State<Param> {
                             ),
                           ),
                         Padding(
-                          padding: EdgeInsets.only(right: 8.0),
+                          padding: EdgeInsets.only(right: 8),
                           child:  IconTheme(
                             data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
                             child: Icon(Icons.arrow_forward_ios),
@@ -672,6 +677,7 @@ class _ParamPageState extends State<Param> {
                   color: const Color.fromARGB(255, 255, 255, 255),
                   child: InkWell(
                     onTap: () {
+                      // ignore: discarded_futures
                       Navigator.pushNamed(context, '/Param_rules');
                     },
                     onHighlightChanged: (bool isHighlighted) {
@@ -714,8 +720,8 @@ class _ParamPageState extends State<Param> {
                 child: Material(
                   color: const Color.fromARGB(255, 255, 255, 255),
                   child: InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/Param_policy');
+                    onTap: () async {
+                      await Navigator.pushNamed(context, '/Param_policy');
                     },
                     onHighlightChanged: (bool isHighlighted) {
                         // Handle highlight change
@@ -723,7 +729,7 @@ class _ParamPageState extends State<Param> {
                       splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
                       highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                     child: const Row(
-                      children: [
+                      children: <Widget>[
                         Padding(
                           padding: EdgeInsets.only(left: 16, right: 8),
                           child: IconTheme(
@@ -769,7 +775,7 @@ class _ParamPageState extends State<Param> {
                       splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
                       highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                     child: const Row(
-                      children: [
+                      children: <Widget>[
                         Padding(
                           padding: EdgeInsets.only(left: 16, right: 8),
                           child: IconTheme(
@@ -784,7 +790,7 @@ class _ParamPageState extends State<Param> {
                             ),
                           ),
                         Padding(
-                          padding: EdgeInsets.only(right: 8.0),
+                          padding: EdgeInsets.only(right: 8),
                           child:  IconTheme(
                             data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
                             child: Icon(Icons.arrow_forward_ios),
@@ -803,8 +809,8 @@ class _ParamPageState extends State<Param> {
                 child: Material(
                   color: const Color.fromARGB(255, 255, 255, 255),
                   child: InkWell(
-                    onTap: () {
-                      showModalBottomSheet<void>(
+                    onTap: () async {
+                      unawaited(showModalBottomSheet<void>(
               context: context,
               builder: (BuildContext context) {
                 return Container(
@@ -819,13 +825,14 @@ class _ParamPageState extends State<Param> {
                           'Voulez-vous vraiment supprimer votre compte ?',
                           style: TextStyle(
                             fontSize: 14,
-                            color: Color.fromARGB(255, 152, 152, 152)
+                            color: Color.fromARGB(255, 152, 152, 152),
                           ),
                         ),
                         const SizedBox(height: 25),
                         Container(
                           width: double.infinity,
                           height: 1,
+                          // ignore: avoid_redundant_argument_values
                           margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
                           child: const Divider(
                             color: Color.fromARGB(255, 238, 238, 238),
@@ -853,7 +860,7 @@ class _ParamPageState extends State<Param> {
                                     'Supprimer',
                                     style: TextStyle(
                                       fontSize: 15,
-                                      color: Color.fromARGB(255, 255, 0, 0)
+                                      color: Color.fromARGB(255, 255, 0, 0),
                                     ),
                                   ),
 
@@ -865,7 +872,7 @@ class _ParamPageState extends State<Param> {
                       Container(
                           width: double.infinity,
                           height: 1,
-                          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+                          margin: const EdgeInsets.symmetric(horizontal: 8),
                           child: const Divider(
                             color: Color.fromARGB(255, 238, 238, 238),
                             thickness: 1,
@@ -904,17 +911,16 @@ class _ParamPageState extends State<Param> {
                   ),
                 );
               },
-            );
+            ),);
                     },
                     onHighlightChanged: (bool isHighlighted) {
-                        // Handle highlight change
                       },
                       splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
                       highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                     child: const Row(
-                      children: [
+                      children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.only(left: 16.0, right: 8.0),
+                          padding: EdgeInsets.only(left: 16, right: 8),
                           child: IconTheme(
                               data: IconThemeData(color:  Color.fromARGB(255, 138, 138, 138)), // Change the color here
                               child: Icon(Icons.delete_forever),
@@ -927,7 +933,7 @@ class _ParamPageState extends State<Param> {
                             ),
                           ),
                         Padding(
-                          padding: EdgeInsets.only(right: 8.0),
+                          padding: EdgeInsets.only(right: 8),
                           child:  IconTheme(
                             data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138), size: 15), // Change the color here
                             child: Icon(Icons.arrow_forward_ios),
@@ -944,10 +950,10 @@ class _ParamPageState extends State<Param> {
                 width: double.infinity,
                 height: 50,
                 child: Material(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   child: InkWell(
-                    onTap: () {
-                      showModalBottomSheet<void>(
+                    onTap: () async {
+                      unawaited(showModalBottomSheet<void>(
               context: context,
               builder: (BuildContext context) {
                 return Container(
@@ -962,14 +968,14 @@ class _ParamPageState extends State<Param> {
                           'Voulez-vous vraiment vous déconnecter ?',
                           style: TextStyle(
                             fontSize: 14,
-                            color: Color.fromARGB(255, 152, 152, 152)
+                            color: Color.fromARGB(255, 152, 152, 152),
                           ),
                         ),
                         const SizedBox(height: 25),
                         Container(
                           width: double.infinity,
                           height: 1,
-                          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+                          margin: const EdgeInsets.symmetric(horizontal: 8),
                           child: const Divider(
                             color: Color.fromARGB(255, 238, 238, 238),
                             thickness: 1,
@@ -1047,7 +1053,7 @@ class _ParamPageState extends State<Param> {
                   ),
                 );
               },
-            );
+            ),);
                     },
                     onHighlightChanged: (bool isHighlighted) {
                         // Handle highlight change

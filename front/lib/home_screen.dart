@@ -1,8 +1,11 @@
-import 'package:flutter/material.dart';
 // import 'package:image_picker/image_picker.dart';
 // import 'package:image_cropper/image_cropper.dart';
 // import 'dart:convert';
+// ignore_for_file: avoid_print
+
 import 'dart:async';
+
+import 'package:flutter/material.dart';
 //import 'dart:io';
 //import 'dart:html';
 import 'package:http/http.dart' as http;
@@ -11,12 +14,14 @@ import 'package:http/http.dart' as http;
 
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
+// ignore: non_constant_identifier_names, always_specify_types
 int handle_response(response) {
   if (response.statusCode == 200) {
     return 1;
@@ -25,11 +30,12 @@ int handle_response(response) {
   }
 }
 
+// ignore: always_specify_types
 Future<http.Response> makePostRequest(email, password) async {
-  final url = Uri.parse('http://192.168.1.91:3000/login');
-  final headers = {"Content-type": "application/json"};
-  final json = '{"email": "$email", "password": "$password"}';
-  final response = await http.post(url, headers: headers, body: json);
+  final Uri url = Uri.parse('http://192.168.1.91:3000/login');
+  final Map<String, String> headers = <String, String>{'Content-type': 'application/json'};
+  final String json = '{"email": "$email", "password": "$password"}';
+  final http.Response response = await http.post(url, headers: headers, body: json);
   return response;
 }
 
@@ -73,32 +79,34 @@ Future<http.Response> makePostRequest(email, password) async {
 
 
 class PageHome extends StatelessWidget {
+  const PageHome({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(56.0), // Set the preferred height of the AppBar
+        preferredSize: const Size.fromHeight(56), // Set the preferred height of the AppBar
         child: AppBar(
           automaticallyImplyLeading: false,
           elevation: 0,
-          backgroundColor: Color.fromARGB(255, 255, 255, 255),
-          iconTheme: IconThemeData(
-            color: const Color.fromARGB(255, 0, 0, 0),
+          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+          iconTheme: const IconThemeData(
+            color: Color.fromARGB(255, 0, 0, 0),
           ),
           centerTitle: true, // Center the title and actions
           title: Image.asset(
-            'assets/logo2.gif', // Replace with your image asset path
-            scale: 8,
+            'assets/Wearver.png', // Replace with your image asset path
+            scale: 15,
           ),
         ),
       ),
         body: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics (),
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8),
         child: Column(
-        children: [
+        children: <Widget>[
           Container(
           margin: const EdgeInsets.symmetric(vertical: 20),
           height: 30,
@@ -114,19 +122,17 @@ class PageHome extends StatelessWidget {
                     borderRadius: BorderRadius.circular(6), //Définir le rayon du bord arrondi
                   ),
                   side: const BorderSide(
-                    width: 1.0,
                     color: Color.fromARGB(255, 255, 255, 255),
-                    style: BorderStyle.solid,
                   ),
                   textStyle: const TextStyle(
                     color: Color.fromARGB(255, 0, 0, 0),
                   ),
-                  backgroundColor: Color.fromARGB(255, 227, 231, 234),
+                  backgroundColor: const Color.fromARGB(255, 227, 231, 234),
                   //onPrimary: Color.fromARGB(255, 50, 114, 209),
                 ),
-                onPressed: () {
-                  print("Nouveauté");
-                  Navigator.pushNamed(context, '/Trend_new');
+                onPressed: () async {
+                  print('Nouveauté');
+                  await Navigator.pushNamed(context, '/Trend_new');
                 },
                 child: const Text('Nouveauté', style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontFamily: 'Apple2')),
               ),
@@ -138,19 +144,17 @@ class PageHome extends StatelessWidget {
                     borderRadius: BorderRadius.circular(6), //Définir le rayon du bord arrondi
                   ),
                   side: const BorderSide(
-                    width: 1.0,
                     color: Color.fromARGB(255, 255, 255, 255),
-                    style: BorderStyle.solid,
                   ),
                   textStyle: const TextStyle(
                     color: Color.fromARGB(255, 0, 0, 0),
                   ),
-                  backgroundColor: Color.fromARGB(255, 227, 231, 234),
+                  backgroundColor: const Color.fromARGB(255, 227, 231, 234),
                   //onPrimary: Color.fromARGB(255, 50, 114, 209),
                 ),
-                onPressed: () {
-                  print("Tendances");
-                  Navigator.pushNamed(context, '/Trend_trend');
+                onPressed: () async {
+                  print('Tendances');
+                  await Navigator.pushNamed(context, '/Trend_trend');
                 },
                 child: const Text('Tendances', style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontFamily: 'Apple2')),
               ),
@@ -162,19 +166,17 @@ class PageHome extends StatelessWidget {
                     borderRadius: BorderRadius.circular(6),
                   ),
                   side: const BorderSide(
-                    width: 1.0,
                     color: Color.fromARGB(255, 255, 255, 255),
-                    style: BorderStyle.solid,
                   ),
                   textStyle: const TextStyle(
                     color: Color.fromARGB(255, 0, 0, 0),
                   ),
-                  backgroundColor: Color.fromARGB(255, 227, 231, 234),
+                  backgroundColor: const Color.fromARGB(255, 227, 231, 234),
                   //onPrimary: Color.fromARGB(255, 50, 114, 209),
                 ),
-                onPressed: () {
-                  print("Streetwear");
-                  Navigator.pushNamed(context, '/Trend_street');
+                onPressed: () async {
+                  print('Streetwear');
+                  await Navigator.pushNamed(context, '/Trend_street');
                 },
                 child: const Text('Streetwear', style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontFamily: 'Apple2')),
               ),
@@ -186,19 +188,17 @@ class PageHome extends StatelessWidget {
                     borderRadius: BorderRadius.circular(6), //Définir le rayon du bord arrondi
                   ),
                   side: const BorderSide(
-                    width: 1.0,
                     color: Color.fromARGB(255, 255, 255, 255),
-                    style: BorderStyle.solid,
                   ),
                   textStyle: const TextStyle(
                     color: Color.fromARGB(255, 0, 0, 0),
                   ),
-                  backgroundColor: Color.fromARGB(255, 227, 231, 234),
+                  backgroundColor: const Color.fromARGB(255, 227, 231, 234),
                   //onPrimary: Color.fromARGB(255, 50, 114, 209),
                 ),
-                onPressed: () {
-                  print("Classic");
-                  Navigator.pushNamed(context, '/Trend_classic');
+                onPressed: () async {
+                  print('Classic');
+                  await Navigator.pushNamed(context, '/Trend_classic');
                 },
                 child: const Text('Classic', style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontFamily: 'Apple2')),
               ),
@@ -210,19 +210,17 @@ class PageHome extends StatelessWidget {
                     borderRadius: BorderRadius.circular(6), //Définir le rayon du bord arrondi
                   ),
                   side: const BorderSide(
-                    width: 1.0,
                     color: Color.fromARGB(255, 255, 255, 255),
-                    style: BorderStyle.solid,
                   ),
                   textStyle: const TextStyle(
                     color: Color.fromARGB(255, 0, 0, 0),
                   ),
-                  backgroundColor: Color.fromARGB(255, 227, 231, 234),
+                  backgroundColor: const Color.fromARGB(255, 227, 231, 234),
                   //onPrimary: Color.fromARGB(255, 50, 114, 209),
                 ),
-                onPressed: () {
-                  print("Artistique");
-                  Navigator.pushNamed(context, '/Trend_art');
+                onPressed: () async {
+                  print('Artistique');
+                  await Navigator.pushNamed(context, '/Trend_art');
                 },
                 child: const Text('Artistique', style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontFamily: 'Apple2')),
               ),
@@ -234,76 +232,72 @@ class PageHome extends StatelessWidget {
                     borderRadius: BorderRadius.circular(6), //Définir le rayon du bord arrondi
                   ),
                   side: const BorderSide(
-                    width: 1.0,
                     color: Color.fromARGB(255, 255, 255, 255),
-                    style: BorderStyle.solid,
                   ),
                   textStyle: const TextStyle(
                     color: Color.fromARGB(255, 0, 0, 0),
                   ),
-                  backgroundColor: Color.fromARGB(255, 227, 231, 234),
+                  backgroundColor: const Color.fromARGB(255, 227, 231, 234),
                   //onPrimary: Color.fromARGB(255, 50, 114, 209),
                 ),
-                onPressed: () {
-                  print("Exotique");
-                  Navigator.pushNamed(context, '/Trend_exo');
+                onPressed: () async {
+                  print('Exotique');
+                  await Navigator.pushNamed(context, '/Trend_exo');
                 },
                 child: const Text('Exotique', style: TextStyle(color: Color.fromARGB(255, 0, 0, 0))),
               ),
-            ]
+            ],
           ),
       ),
-      SizedBox(height: 10),
-      Padding(
-        padding: const EdgeInsets.only(right: 75.0),
-        child:  const Text('Notre coup de coeur', style: TextStyle(fontSize: 27, fontFamily: 'Apple',color: Color.fromARGB(255, 21, 21, 21),letterSpacing: 0.001,),),
+      const SizedBox(height: 10),
+      const Padding(
+        padding: EdgeInsets.only(right: 75),
+        child:  Text('Notre coup de coeur', style: TextStyle(fontSize: 27, fontFamily: 'Apple',color: Color.fromARGB(255, 21, 21, 21),letterSpacing: 0.001,),),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
       Container(
         width: double.infinity, // Takes up the maximum width
-          margin: EdgeInsets.symmetric(horizontal: 20.0), // Adjust the spacing from the max width
-          height: 500.0, // Set the height to 500
+          margin: const EdgeInsets.symmetric(horizontal: 20), // Adjust the spacing from the max width
+          height: 500, // Set the height to 500
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 227, 231, 234),
-            boxShadow: [
+            color: const Color.fromARGB(255, 227, 231, 234),
+            boxShadow: <BoxShadow>[
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 5,
                 blurRadius: 7,
-                offset: Offset(0, 0), // Adjust the shadow offset as needed
               ),
             ],
-            borderRadius: BorderRadius.circular(20.0), // Adjust the border radius as needed
+            borderRadius: BorderRadius.circular(20), // Adjust the border radius as needed
           ),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(20),
             child: Image.asset(
               'assets/top1.png', // Replace with the path to your local image asset
               fit: BoxFit.cover, // Adjust the fit property as needed
             ),
           ),
       ),
-      SizedBox(height: 30),
+      const SizedBox(height: 30),
       Stack(
             children: <Widget> [
       Container(
         width: double.infinity, // Takes up the maximum width
-          margin: EdgeInsets.symmetric(horizontal: 20.0), // Adjust the spacing from the max width
-          height: 500.0, // Set the height to 500
+          margin: const EdgeInsets.symmetric(horizontal: 20), // Adjust the spacing from the max width
+          height: 500, // Set the height to 500
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 227, 231, 234),
-            boxShadow: [
+            color: const Color.fromARGB(255, 227, 231, 234),
+            boxShadow: <BoxShadow>[
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 5,
                 blurRadius: 7,
-                offset: Offset(0, 0), // Adjust the shadow offset as needed
               ),
             ],
-            borderRadius: BorderRadius.circular(20.0), // Adjust the border radius as needed
+            borderRadius: BorderRadius.circular(20), // Adjust the border radius as needed
           ),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(20),
             child: Image.asset(
               'assets/commercial.jpg', // Replace with the path to your local image asset
               fit: BoxFit.cover, // Adjust the fit property as needed
@@ -322,12 +316,12 @@ class PageHome extends StatelessWidget {
               'assets/logo.png', scale: 15, // Replace with the path to your local image asset
             ),
       ),
-            ]
+            ],
       ),
-      SizedBox(height: 30),
-      Padding(
-        padding: const EdgeInsets.only(right: 75.0),
-        child:  const Text('Créateurs tendances', style: TextStyle(fontSize: 27, fontFamily: 'Apple',color: Color.fromARGB(255, 21, 21, 21),letterSpacing: 0.001,),),
+      const SizedBox(height: 30),
+      const Padding(
+        padding: EdgeInsets.only(right: 75),
+        child:  Text('Créateurs tendances', style: TextStyle(fontSize: 27, fontFamily: 'Apple',color: Color.fromARGB(255, 21, 21, 21),letterSpacing: 0.001,),),
         ),
       Container(
           margin: const EdgeInsets.symmetric(vertical: 10),
@@ -338,96 +332,91 @@ class PageHome extends StatelessWidget {
             children: <Widget>[
               Container(
                 width: 150, // Takes up the maximum width
-                margin: EdgeInsets.symmetric(vertical: 13.0, horizontal: 20.0), // Adjust the spacing from the max width
+                margin: const EdgeInsets.symmetric(vertical: 13, horizontal: 20), // Adjust the spacing from the max width
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 227, 231, 234),
-                  boxShadow: [
+                  color: const Color.fromARGB(255, 227, 231, 234),
+                  boxShadow: <BoxShadow>[
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 3,
                       blurRadius: 7,
-                      offset: Offset(0, 0), // Adjust the shadow offset as needed
                     ),
                   ],
-                  borderRadius: BorderRadius.circular(20.0), // Adjust the border radius as needed
-                )
+                  borderRadius: BorderRadius.circular(20), // Adjust the border radius as needed
+                ),
               ),
               Container(
                 width: 150, // Takes up the maximum width
-                margin: EdgeInsets.symmetric(vertical: 13.0, horizontal: 20.0), // Adjust the spacing from the max width
+                margin: const EdgeInsets.symmetric(vertical: 13, horizontal: 20), // Adjust the spacing from the max width
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 227, 231, 234),
-                  boxShadow: [
+                  color: const Color.fromARGB(255, 227, 231, 234),
+                  boxShadow: <BoxShadow>[
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 3,
                       blurRadius: 7,
-                      offset: Offset(0, 0), // Adjust the shadow offset as needed
                     ),
                   ],
-                  borderRadius: BorderRadius.circular(20.0), // Adjust the border radius as needed
-                )
+                  borderRadius: BorderRadius.circular(20), // Adjust the border radius as needed
+                ),
               ),
               Container(
                 width: 150, // Takes up the maximum width
-                margin: EdgeInsets.symmetric(vertical: 13.0, horizontal: 20.0), // Adjust the spacing from the max width
+                margin: const EdgeInsets.symmetric(vertical: 13, horizontal: 20), // Adjust the spacing from the max width
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 227, 231, 234),
-                  boxShadow: [
+                  color: const Color.fromARGB(255, 227, 231, 234),
+                  boxShadow: <BoxShadow>[
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 3,
                       blurRadius: 7,
-                      offset: Offset(0, 0), // Adjust the shadow offset as needed
                     ),
                   ],
-                  borderRadius: BorderRadius.circular(20.0), // Adjust the border radius as needed
-                )
+                  borderRadius: BorderRadius.circular(20), // Adjust the border radius as needed
+                ),
               ),
               Container(
                 width: 150, // Takes up the maximum width
-                margin: EdgeInsets.symmetric(vertical: 13.0, horizontal: 20.0), // Adjust the spacing from the max width
+                margin: const EdgeInsets.symmetric(vertical: 13, horizontal: 20), // Adjust the spacing from the max width
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 227, 231, 234),
-                  boxShadow: [
+                  color: const Color.fromARGB(255, 227, 231, 234),
+                  boxShadow: <BoxShadow>[
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 3,
                       blurRadius: 7,
-                      offset: Offset(0, 0), // Adjust the shadow offset as needed
                     ),
                   ],
-                  borderRadius: BorderRadius.circular(20.0), // Adjust the border radius as needed
-                )
+                  borderRadius: BorderRadius.circular(20), // Adjust the border radius as needed
+                ),
               ),
               Container(
                 width: 150, // Takes up the maximum width
-                margin: EdgeInsets.symmetric(vertical: 13.0, horizontal: 20.0), // Adjust the spacing from the max width
+                margin: const EdgeInsets.symmetric(vertical: 13, horizontal: 20), // Adjust the spacing from the max width
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 227, 231, 234),
-                  boxShadow: [
+                  color: const Color.fromARGB(255, 227, 231, 234),
+                  boxShadow: <BoxShadow>[
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 3,
                       blurRadius: 7,
-                      offset: Offset(0, 0), // Adjust the shadow offset as needed
                     ),
                   ],
-                  borderRadius: BorderRadius.circular(20.0), // Adjust the border radius as needed
-                )
+                  borderRadius: BorderRadius.circular(20), // Adjust the border radius as needed
+                ),
               ),
-        ]
+        ],
         ),
     ),
-    SizedBox(height: 30),
+    const SizedBox(height: 30),
               const Padding(
-                padding: EdgeInsets.only(right: 260.0),
+                padding: EdgeInsets.only(right: 260),
                 child: Text('Top 10', style: TextStyle(fontSize: 27, fontFamily: 'Apple',color: Color.fromARGB(255, 21, 21, 21),letterSpacing: 0.001,),),
                 ),
-                SizedBox(height: 10),
-        ]
+                const SizedBox(height: 10),
+        ],
         ),
-        )
+        ),
     );
   }
 }
@@ -444,10 +433,12 @@ class PageHome extends StatelessWidget {
 
 
 class PageSearch extends StatelessWidget {
+  const PageSearch({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final MysearchController = TextEditingController();
-    List<String> imageAssetPaths = [
+    final TextEditingController mysearchcontroller = TextEditingController();
+    final List<String> imageAssetPaths = <String>[
       'assets/a1.png',
       'assets/a2.png',
       'assets/a3.png',
@@ -468,58 +459,59 @@ class PageSearch extends StatelessWidget {
       'assets/a18.png',
     ];
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
-        backgroundColor: Color.fromARGB(255, 145, 53, 244),
-        iconTheme: IconThemeData(
-            color: const Color.fromARGB(255, 0, 0, 0), // Changer la couleur ici
+        backgroundColor: const Color.fromARGB(255, 145, 53, 244),
+        iconTheme: const IconThemeData(
+            color: Color.fromARGB(255, 0, 0, 0), // Changer la couleur ici
           ),
         title: Column(
-        children: [
+        children: <Widget>[
         SizedBox(
               width: 390,
               height: 50,
               child: TextField(
                 enableSuggestions: false,
                 autocorrect: false,
-                controller: MysearchController,
+                controller: mysearchcontroller
+          ,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.search),
-                  fillColor: Color.fromARGB(255, 255, 255, 255),
+                  prefixIcon: const Icon(Icons.search),
+                  fillColor: const Color.fromARGB(255, 255, 255, 255),
                   filled: true,
-                  hintText: "Calendrier",
-                  hintStyle: TextStyle(color: Color.fromARGB(255, 184, 184, 184), fontFamily: 'Apple2'),
+                  hintText: 'Rechercher',
+                  hintStyle: const TextStyle(color: Color.fromARGB(255, 184, 184, 184), fontFamily: 'Apple2'),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(width: 1, color: Color.fromARGB(255, 176, 190, 242)),
+                  borderSide: const BorderSide(color: Color.fromARGB(255, 176, 190, 242)),
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
               ),
             ),
           const SizedBox(height: 5),
-        ]
+        ],
       ),
       ),
       body: ListView.builder(
         physics: const AlwaysScrollableScrollPhysics (),
         itemCount: (imageAssetPaths.length / 2).ceil(), // Number of rows
-        itemBuilder: (context, rowIndex) {
+        itemBuilder: (BuildContext context, int rowIndex) {
         final int startIndex = rowIndex * 3;
           final int endIndex = startIndex + 3;
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              for (var i = startIndex; i < endIndex; i++)
+            children: <Widget>[
+              for (int i = startIndex; i < endIndex; i++)
                 if (i < imageAssetPaths.length)
                   GestureDetector(
                     onTap: () {
                       print(imageAssetPaths[i]);
                     },
                     child: Padding(
-                      padding: EdgeInsets.all(1), // Add padding here
+                      padding: const EdgeInsets.all(1), // Add padding here
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width / 3 - 2, // Adjust the width
                         height: 190, // Adjust the height
@@ -528,8 +520,8 @@ class PageSearch extends StatelessWidget {
                           fit: BoxFit.cover, // Adjust the image scaling
                         ),
                       ),
-                    )
-                )
+                    ),
+                ),
             ],
           );
         },
@@ -544,10 +536,12 @@ class PageSearch extends StatelessWidget {
 
 
 class PageMessage extends StatelessWidget {
+  const PageMessage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text("tu n'a aucun message pour le moment 🥲"),
+      child: Text('ton panier est vide pour le moment 🥲'),
     );
   }
 }
@@ -559,6 +553,8 @@ class PageMessage extends StatelessWidget {
 
 
 class PageProfile extends StatelessWidget {
+  const PageProfile({super.key});
+
   // final _HomePageState parent;
 
   // PageProfile(this.parent, {File? defaultImage}) {
@@ -572,62 +568,64 @@ class PageProfile extends StatelessWidget {
       return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Padding(
+          // ignore: use_named_constants
           padding: const EdgeInsets.all(0),
           child: Stack(
             children: <Widget> [
-              Container(
+              // ignore: sized_box_shrink_expand
+              SizedBox(
                 width: double.infinity,
                 height: double.infinity,
                 child: Material (
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   child: InkWell(
                     onTap: () {
                     },
-                  ),)
+                  ),),
               ),
-              Container(
+              SizedBox(
                 width: double.infinity,
                 height: 200,
                 child: Material(
                   color: Colors.transparent, // Make the Material widget transparent
                   child: Ink.image(
-                    image: AssetImage('assets/test.gif'), // Change 'your_image.png' to your image path
+                    image: const AssetImage('assets/test.gif'), // Change 'your_image.png' to your image path
                     fit: BoxFit.cover, // You can adjust the fit property as needed
                     child: InkWell(
-                      onTap: () {
-                        showModalBottomSheet<void>(
+                      onTap: () async {
+                        await showModalBottomSheet<void>(
               context: context,
               builder: (BuildContext context) {
                 return Container(
                   height: 150,
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Center(
-                          child: Container(
+                          child: SizedBox(
                             width: double.infinity,
                             height: 50,
                             child: Material(
-                              color: Color.fromARGB(255, 255, 255, 255),
+                              color: const Color.fromARGB(255, 255, 255, 255),
                               child: InkWell(
                                 onTap: () {
-                                  print("Container clicked");
+                                  print('Container clicked');
                                   //parent.pickImage();
                                 },
-                                onHighlightChanged: (isHighlighted) {
+                                onHighlightChanged: (bool isHighlighted) {
                                   // Handle highlight change
                                 },
-                                splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                                highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                                splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                                highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                                 child: const Row(
-                                  children: [
+                                  children: <Widget>[
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+                                      padding: EdgeInsets.only(left: 16, right: 8),
                                       child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
                               child: Icon(Icons.edit),
                             ),
                                     ),
@@ -646,33 +644,33 @@ class PageProfile extends StatelessWidget {
                         Container(
                           width: double.infinity,
                           height: 1,
-                          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+                          margin: const EdgeInsets.symmetric(horizontal: 8),
                           child: const Divider(
                             color: Color.fromARGB(255, 214, 214, 214),
                             thickness: 1,
                           ),
                         ),
                         Center(
-                        child: Container(
+                        child: SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: Material(
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: const Color.fromARGB(255, 255, 255, 255),
                             child: InkWell(
                               onTap: () {
                                 Navigator.pop(context);
                               },
-                              onHighlightChanged: (isHighlighted) {
+                              onHighlightChanged: (bool isHighlighted) {
                                   // Handle highlight change
                                 },
-                                splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                                highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                                splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                                highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                               child: const Row(
-                                children: [
+                                children: <Widget>[
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+                                    padding: EdgeInsets.only(left: 16, right: 8),
                                     child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
                               child: Icon(Icons.arrow_back_ios),
                             ),
                                   ),
@@ -688,13 +686,13 @@ class PageProfile extends StatelessWidget {
                           ),
                         ),
                       ),
-                      ]
+                      ],
                     ),
                   ),
                 );
                 },
                   );
-                        print("click");
+                        print('click');
                       },
                     ),
                   ),
@@ -704,39 +702,39 @@ class PageProfile extends StatelessWidget {
                 top: 50,
                 right: 10,
                 child: IconButton(
-                  onPressed: () {
-                showModalBottomSheet<void>(
+                  onPressed: () async {
+                unawaited(showModalBottomSheet<void>(
               context: context,
               builder: (BuildContext context) {
                 return Container(
                   height: 250,
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Center(
-                          child: Container(
+                          child: SizedBox(
                             width: double.infinity,
                             height: 50,
                             child: Material(
-                              color: Color.fromARGB(255, 255, 255, 255),
+                              color: const Color.fromARGB(255, 255, 255, 255),
                               child: InkWell(
                                 onTap: () {
                                   // Handle button tap
                                 },
-                                onHighlightChanged: (isHighlighted) {
+                                onHighlightChanged: (bool isHighlighted) {
                                   // Handle highlight change
                                 },
-                                splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                                highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                                splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                                highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                                 child: const Row(
-                                  children: [
+                                  children: <Widget>[
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+                                      padding: EdgeInsets.only(left: 16, right: 8),
                                       child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
                               child: Icon(Icons.share),
                             ),
                                     ),
@@ -755,31 +753,31 @@ class PageProfile extends StatelessWidget {
                         Container(
                           width: double.infinity,
                           height: 1,
-                          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+                          margin: const EdgeInsets.symmetric(horizontal: 8),
                           child: const Divider(
                             color: Color.fromARGB(255, 214, 214, 214),
                             thickness: 1,
                           ),
                         ),
                         Center(
-                          child: Container(
+                          child: SizedBox(
                             width: double.infinity,
                             height: 50,
                             child: Material(
-                              color: Color.fromARGB(255, 255, 255, 255),
+                              color: const Color.fromARGB(255, 255, 255, 255),
                               child: InkWell(
                                 onTap: () {
                                   // Handle button tap
                                 },
-                                onHighlightChanged: (isHighlighted) {
+                                onHighlightChanged: (bool isHighlighted) {
                                   // Handle highlight change
                                 },
-                                splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                                highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                                splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                                highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                                 child: const Row(
-                                  children: [
+                                  children: <Widget>[
                                     Padding(
-                                      padding: EdgeInsets.only(left: 16.0, right: 8.0),
+                                      padding: EdgeInsets.only(left: 16, right: 8),
                                       child: IconTheme(
                               data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
                               child: Icon(Icons.edit),
@@ -800,33 +798,33 @@ class PageProfile extends StatelessWidget {
                         Container(
                           width: double.infinity,
                           height: 1,
-                          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+                          margin: const EdgeInsets.symmetric(horizontal: 8),
                           child: const Divider(
                             color: Color.fromARGB(255, 214, 214, 214),
                             thickness: 1,
                           ),
                         ),
                         Center(
-                        child: Container(
+                        child: SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: Material(
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: const Color.fromARGB(255, 255, 255, 255),
                             child: InkWell(
                               onTap: () {
                                 Navigator.pushNamed(context, '/Param');
                               },
-                              onHighlightChanged: (isHighlighted) {
+                              onHighlightChanged: (bool isHighlighted) {
                                   // Handle highlight change
                                 },
-                                splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                                highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                                splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                                highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                               child: const Row(
-                                children: [
+                                children: <Widget>[
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+                                    padding: EdgeInsets.only(left: 16, right: 8),
                                     child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
                               child: Icon(Icons.settings),
                             ),
                                   ),
@@ -845,18 +843,18 @@ class PageProfile extends StatelessWidget {
                       Container(
                           width: double.infinity,
                           height: 1,
-                          margin: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
-                          child: Divider(
-                            color: const Color.fromARGB(255, 214, 214, 214),
+                          margin: const EdgeInsets.symmetric(horizontal: 8),
+                          child: const Divider(
+                            color: Color.fromARGB(255, 214, 214, 214),
                             thickness: 1,
                           ),
                         ),
                         Center(
-                        child: Container(
+                        child: SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: Material(
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: const Color.fromARGB(255, 255, 255, 255),
                             child: InkWell(
                               onTap: () {
                                 Navigator.of(context).pop();
@@ -865,51 +863,51 @@ class PageProfile extends StatelessWidget {
               builder: (BuildContext context) {
                 return Container(
                   height: 200,
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Text(
+                        const Text(
                           'Voulez-vous vraiment vous déconnecter ?',
                           style: TextStyle(
                             fontSize: 14,
-                            color: Color.fromARGB(255, 152, 152, 152)
+                            color: Color.fromARGB(255, 152, 152, 152),
                           ),
                         ),
                         const SizedBox(height: 25),
                         Container(
                           width: double.infinity,
                           height: 1,
-                          margin: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
-                          child: Divider(
+                          margin: const EdgeInsets.symmetric(horizontal: 8),
+                          child: const Divider(
                             color: Color.fromARGB(255, 238, 238, 238),
                             thickness: 1,
                           ),
                         ),
                         Center(
-                        child: Container(
+                        child: SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: Material(
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: const Color.fromARGB(255, 255, 255, 255),
                             child: InkWell(
                               onTap: () {
                                 Navigator.pushNamed(context, '/');
                               },
-                              onHighlightChanged: (isHighlighted) {
+                              onHighlightChanged: (bool isHighlighted) {
                                   // Handle highlight change
                                 },
-                                splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                                highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                                splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                                highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                               child: const Center(
                                 child:
                                   Text(
                                     'Déconnexion',
                                     style: TextStyle(
                                       fontSize: 15,
-                                      color: Color.fromARGB(255, 255, 0, 0)
+                                      color: Color.fromARGB(255, 255, 0, 0),
                                     ),
                                   ),
 
@@ -921,27 +919,27 @@ class PageProfile extends StatelessWidget {
                       Container(
                           width: double.infinity,
                           height: 1,
-                          margin: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
-                          child: Divider(
+                          margin: const EdgeInsets.symmetric(horizontal: 8),
+                          child: const Divider(
                             color: Color.fromARGB(255, 238, 238, 238),
                             thickness: 1,
                           ),
                         ),
                         Center(
-                        child: Container(
+                        child: SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: Material(
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: const Color.fromARGB(255, 255, 255, 255),
                             child: InkWell(
                               onTap: () {
                                 Navigator.of(context).pop();
                               },
-                              onHighlightChanged: (isHighlighted) {
+                              onHighlightChanged: (bool isHighlighted) {
                                   // Handle highlight change
                                 },
-                                splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                                highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                                splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                                highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                               child: const Center(
                                 child:
                                   Text(
@@ -962,17 +960,17 @@ class PageProfile extends StatelessWidget {
               },
             );
                               },
-                              onHighlightChanged: (isHighlighted) {
+                              onHighlightChanged: (bool isHighlighted) {
                                   // Handle highlight change
                                 },
-                                splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                                highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                                splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                                highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                               child: const Row(
-                                children: [
+                                children: <Widget>[
                                   Padding(
-                                    padding: EdgeInsets.only(left: 16.0, right: 8.0),
+                                    padding: EdgeInsets.only(left: 16, right: 8),
                                     child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
                               child: Icon(Icons.logout),
                             ),
                                   ),
@@ -993,7 +991,7 @@ class PageProfile extends StatelessWidget {
                   ),
                 );
               },
-            );
+            ),);
               },
               icon: const Icon(Icons.dehaze_rounded),
             ),
@@ -1002,41 +1000,41 @@ class PageProfile extends StatelessWidget {
                 top: 135,
                 left: 10,
                 child: GestureDetector(
-                onTap: () {
-                  print("Container clicked");
-                  showModalBottomSheet<void>(
+                onTap: () async {
+                  print('Container clicked');
+                  await showModalBottomSheet<void>(
               context: context,
               builder: (BuildContext context) {
                 return Container(
                   height: 150,
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Center(
-                          child: Container(
+                          child: SizedBox(
                             width: double.infinity,
                             height: 50,
                             child: Material(
-                              color: Color.fromARGB(255, 255, 255, 255),
+                              color: const Color.fromARGB(255, 255, 255, 255),
                               child: InkWell(
                                 onTap: () {
-                                  print("Container clicked");
+                                  print('Container clicked');
                                   //parent.pickImage();
                                 },
-                                onHighlightChanged: (isHighlighted) {
+                                onHighlightChanged: (bool isHighlighted) {
                                   // Handle highlight change
                                 },
-                                splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                                highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                                splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                                highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                                 child: const Row(
-                                  children: [
+                                  children: <Widget>[
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+                                      padding: EdgeInsets.only(left: 16, right: 8),
                                       child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
                               child: Icon(Icons.edit),
                             ),
                                     ),
@@ -1055,33 +1053,33 @@ class PageProfile extends StatelessWidget {
                         Container(
                           width: double.infinity,
                           height: 1,
-                          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+                          margin: const EdgeInsets.symmetric(horizontal: 8),
                           child: const Divider(
                             color: Color.fromARGB(255, 214, 214, 214),
                             thickness: 1,
                           ),
                         ),
                         Center(
-                        child: Container(
+                        child: SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: Material(
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: const Color.fromARGB(255, 255, 255, 255),
                             child: InkWell(
                               onTap: () {
                                 Navigator.pop(context);
                               },
-                              onHighlightChanged: (isHighlighted) {
+                              onHighlightChanged: (bool isHighlighted) {
                                   // Handle highlight change
                                 },
-                                splashColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed
-                                highlightColor: Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
+                                splashColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed
+                                highlightColor: const Color.fromARGB(255, 210, 210, 210), // Color when pressed and held
                               child: const Row(
-                                children: [
+                                children: <Widget>[
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+                                    padding: EdgeInsets.only(left: 16, right: 8),
                                     child: IconTheme(
-                              data: IconThemeData(color: const Color.fromARGB(255, 138, 138, 138)), // Change the color here
+                              data: IconThemeData(color: Color.fromARGB(255, 138, 138, 138)), // Change the color here
                               child: Icon(Icons.arrow_back_ios),
                             ),
                                   ),
@@ -1097,7 +1095,7 @@ class PageProfile extends StatelessWidget {
                           ),
                         ),
                       ),
-                      ]
+                      ],
                     ),
                   ),
                 );
@@ -1107,17 +1105,16 @@ class PageProfile extends StatelessWidget {
                 child: Container(
                 width: 85,
                 height: 85,
-                margin: EdgeInsets.symmetric(vertical: 13.0, horizontal: 20.0),
+                margin: const EdgeInsets.symmetric(vertical: 13, horizontal: 20),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 145, 53, 244),
+                  color: const Color.fromARGB(255, 145, 53, 244),
                   border: Border.all(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                      width: 2.0,
+                      width: 2,
                   ),
-                  borderRadius: BorderRadius.circular(15.0),
+                  borderRadius: BorderRadius.circular(15),
                 ),
                 child: ClipRRect(
-                borderRadius: BorderRadius.circular(13.0),
+                borderRadius: BorderRadius.circular(13),
                 child: 
                 Image.asset('assets/logo.png', fit: BoxFit.cover), // Default image
             ),
@@ -1125,7 +1122,7 @@ class PageProfile extends StatelessWidget {
           ),
               ),
               ),
-            ]
+            ],
               ),
         ),
           );
@@ -1135,11 +1132,11 @@ class PageProfile extends StatelessWidget {
 class _HomePageState extends State<Home> {
   int _currentIndex = 0;
   // final ScrollController _homeController = ScrollController();
-  final List<Widget> _children = [
-    PageHome(),
-    PageSearch(),
-    PageMessage(),
-    PageProfile(),
+  final List<Widget> _children = <Widget>[
+    const PageHome(),
+    const PageSearch(),
+    const PageMessage(),
+    const PageProfile(),
     ];
 
   @override
@@ -1148,28 +1145,28 @@ class _HomePageState extends State<Home> {
       body:_children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Color.fromARGB(255, 220, 226, 249),
+        backgroundColor: const Color.fromARGB(255, 220, 226, 249),
         onTap: onTabTapped,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home, color: Color.fromARGB(255, 0, 0, 0),),
-            label: "Accueil"
+            label: 'Accueil',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search, color: Color.fromARGB(255, 0, 0, 0),),
-            label: "Rechercher"
+            label: 'Rechercher',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.message, color: Color.fromARGB(255, 0, 0, 0),),
-            label: "Message"
+            icon: Icon(Icons.shopping_cart, color: Color.fromARGB(255, 0, 0, 0),),
+            label: 'Panier',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined, color: Color.fromARGB(255, 0, 0, 0),),
-            label: "Profil"
+            label: 'Profil',
           ),
         ],
         currentIndex: _currentIndex,
-        selectedItemColor: Color.fromARGB(255, 0, 0, 0),
+        selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
       ),
     );
   }
@@ -1178,8 +1175,8 @@ class _HomePageState extends State<Home> {
       setState(() {_currentIndex = index;});
   }
 
-  void showModal(BuildContext context) {
-    showDialog(
+  Future<void> showModal(BuildContext context) async {
+    unawaited(showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
         content: const Text('Example Dialog'),
@@ -1189,9 +1186,9 @@ class _HomePageState extends State<Home> {
               Navigator.pop(context);
             },
             child: const Text('Close'),
-          )
+          ),
         ],
       ),
-    );
+    ),);
   }
 }
