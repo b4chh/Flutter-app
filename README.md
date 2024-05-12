@@ -55,8 +55,8 @@ The Weaver mobile app revolutionizes online shopping with a user-friendly interf
    Clone the repository to your local machine using the following command:
 
     ```bash
-    git clone https://github.com/b4chh/YourProject
-    cd YourProject
+    git clone https://github.com/b4chh/Flutter-app
+    cd Flutter-app
     ```
 2. **Step 2**:
    Install the required dependencies using the following command:
