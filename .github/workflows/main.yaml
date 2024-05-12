@@ -19,8 +19,12 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-      - run: flutter pub get
-      - run: flutter build apk --release --split-per-abi
+      - name: Get dependencies
+        run: flutter pub get
+        working-directory: ./front
+      - name: Build APK
+        run: flutter build apk --release --split-per-abi
+        working-directory: ./front
 
       - name:  Push to Release
         uses: ncipollo/release-action@v1
