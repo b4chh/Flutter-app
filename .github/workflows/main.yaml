@@ -26,14 +26,10 @@ jobs:
         run: flutter build apk --release --split-per-abi
         working-directory: ./front
 
-      - name: Get the version
-        id: get_version
-        run: echo ::set-output name=VERSION::$(echo $(cat VERSION | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g') > VERSION && cat VERSION)
-        shell: bash
 
       - name: Push to Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "front/build/app/outputs/apk/release/*"
+          artifacts: "front/app/outputs/apk/release/app-release.apk"
           token: ${{ secrets.SECRETS_APK }}
-          tag: v${{ steps.get_version.outputs.VERSION }}
+          tag: v0.0.2
