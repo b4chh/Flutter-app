@@ -26,10 +26,13 @@ jobs:
         run: flutter build apk --release --split-per-abi
         working-directory: ./front
 
+      - name: Get the date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y%m%d%H%M%S')"
 
       - name: Push to Release
         uses: ncipollo/release-action@v1
         with:
           artifacts: "front/build/app/outputs/apk/release/*.apk"
           token: ${{ secrets.SECRETS_APK }}
-          tag: v0.0.2
+          tag: v${{ steps.date.outputs.date }}2
