@@ -1,54 +1,113 @@
 # Project Title: E-commerce Mobile Application
 
-## Project Overview
+# Project description
 
 The Weaver mobile app revolutionizes online shopping with a user-friendly interface. It offers a login page catering to both buyers and sellers, streamlining access for all users.  With a marketplace feature, users can effortlessly browse through a wide array of items, ensuring they never miss out on exciting finds. For sellers, a dedicated page facilitates the easy listing and management of items, enhancing the selling experience. Through personalized recommendations and real-time notifications, users stay informed about special offers and new arrivals, ensuring a dynamic and engaging shopping experience.
 
-## Key Features
+## Deployement status
 
-- User Registration: New users can register by providing their details.
-- User Login: Registered users can login to access the application.
-- Navigation: Users can navigate through different screens like the home screen, login screen, and registration screen.
+### APK Android
 
-## Project Architecture
+[![Build my App](https://github.com/b4chh/Flutter-app/actions/workflows/main.yaml/badge.svg)](https://github.com/b4chh/Flutter-app/actions/workflows/main.yaml)
 
-The project follows the standard Flutter project architecture. It is divided into several Dart files, each responsible for a specific feature or screen in the application. The `main.dart` file is the entry point of the application. It contains routes to different screens. Each screen is defined in its own Dart file (like `login_screen.dart`, `register_screen.dart`, etc.). The application also interacts with a backend server for user registration and login.
+### Web App
 
-## External Libraries
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d46a0704-ecb5-40da-8a30-235cd9ae3e8b/deploy-status)](https://app.netlify.com/sites/weaverweb/deploys)
 
-- Flutter: Flutter is the primary SDK used for developing the application. It was chosen for its ability to create high-performance, beautiful applications for mobile, web, and desktop from a single codebase.
-- Dart: Dart is the programming language used for writing the application. It was chosen for its simplicity, ease of learning, and excellent support for Flutter.
+
+## Features
+
+- User registration and authentication.
+- Profile management where users can update their profile information.
+- GPS location tracking for admin users.
+- Admin users can promote other users to admin status.
+- Non-admin users can follow the location of admin users.
+
+## Libraries
+
+- `params_lib`: This library is used for managing user parameters and settings.
+- `account_lib`: This library is used for handling user account related functionalities.
+- `assistance_lib`: This library is used for providing assistance to the users.
+- `trend_page_lib`: This library is used for displaying trending content to the users.
+
+## External Libraries Used
+
+- `geolocator`: The `geolocator` library is used to access the GPS functionalities of the mobile device (iOS, Android) and the web.
+- `provider`: A wrapper around InheritedWidget to make them easier to use and more reusable.
+- `http`: A composable, Future-based library for making HTTP requests.
+- `shared_preferences`: Wraps platform-specific persistent storage for simple data (NSUserDefaults on iOS and macOS, SharedPreferences on Android, etc.).
+- `intl`: Contains code to deal with internationalized/localized messages, date and number formatting and parsing, bi-directional text, and other internationalization issues.
 
 ## Local Deployment
 
-To deploy the app locally, follow these steps:
+### Prerequisites
 
-1. Ensure that you have Flutter and Dart installed on your machine. If not, you can download them from [here](https://flutter.dev/docs/get-started/install).
+- Flutter 3.19.4
+- Android Studio (for Android)
+- Java JDK (for Android)
+- Xcode (for iOS)
+- CocoaPods (for iOS)
+- Chrome browser (for Web)
 
-2. Clone the project repository to your local machine using the following command in your terminal:
+### Setup and Installation
 
-```bash
-git clone https://github.com/b4chh/ecommerce-mobile-application.git
-```
+1. **Step 1**:
+   Clone the repository to your local machine using the following command:
 
-3. Navigate to the project directory:
+    ```bash
+    git clone https://github.com/b4chh/YourProject
+    cd YourProject
+    ```
+2. **Step 2**:
+   Install the required dependencies using the following command:
 
-```bash
-cd ecommerce-mobile-application
-```
+    ```bash
+    flutter pub get
+    ```
 
-4. Run the following command to get all the dependencies:
+### Running on Android
 
-```bash
-flutter pub get
-```
+1. **step 1**:
+   Open an Android emulator or connect a physical device to your machine with USB debugging enabled.
 
-5. Start your emulator or connect your mobile device to your machine.
+2. **Step 2**:
+   Run the application using the following command:
 
-6. Run the app:
+    ```bash
+    flutter run
+    ```
 
-```bash
-flutter run
-```
+### Running on iOS
 
-Please note that you might need to set up a backend server for the application to function correctly. The details for setting up the server are beyond the scope of this README. Please refer to the server's documentation for setup instructions.
+1. **Step 1**:
+   Navigate to the iOS folder within your project and run:
+    ```bash
+    cd ios
+    pod install
+    ```
+
+2. **Step 2**:
+   Open the `Runner.xcworkspace` file in Xcode from the iOS folder.
+
+3. **Step 3**:
+   Select your target device or simulator in Xcode.
+
+4. **Step 4**:
+   Run the application by pressing the 'Run' button in Xcode or using the following command in the terminal at the project root:
+    ```bash
+    flutter run
+    ```
+
+### Running on Web
+
+1. **Step 1**:
+   Ensure that the web version of Flutter is enabled by running:
+    ```bash
+    flutter config --enable-web
+    ```
+
+2. **Step 2**:
+   Launch your project in Chrome by running:
+    ```bash
+    flutter run -d chrome
+    ```

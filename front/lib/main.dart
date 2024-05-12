@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
-import 'login_screen.dart';
-import 'register_screen.dart';
-import 'first_screen.dart';
-import 'home_screen.dart';
-import 'splash_screen.dart';
-import 'param_screen.dart';
-import 'password_help.dart';
-import 'params_lib/assistance/help_screen.dart';
-import 'params_lib/assistance/policy_screen.dart';
-import 'params_lib/assistance/problem_screen.dart';
-import 'params_lib/assistance/rules_screen.dart';
-import 'params_lib/assistance/suggest_screen.dart';
-import 'params_lib/account/confidentialité.dart';
-import 'Trend_page_lib/trend_artistique.dart';
-import 'Trend_page_lib/trend_classic.dart';
-import 'Trend_page_lib/trend_exotic.dart';
-import 'Trend_page_lib/trend_new.dart';
-import 'Trend_page_lib/trend_streetwear.dart';
-import 'Trend_page_lib/trend_trend.dart';
+import 'package:wearver_project/Trend_page_lib/trend_artistique.dart';
+import 'package:wearver_project/Trend_page_lib/trend_classic.dart';
+import 'package:wearver_project/Trend_page_lib/trend_exotic.dart';
+import 'package:wearver_project/Trend_page_lib/trend_new.dart';
+import 'package:wearver_project/Trend_page_lib/trend_streetwear.dart';
+import 'package:wearver_project/Trend_page_lib/trend_trend.dart';
+import 'package:wearver_project/admin_log.dart';
+import 'package:wearver_project/first_screen.dart';
+import 'package:wearver_project/home_screen.dart';
+import 'package:wearver_project/login_screen.dart';
+import 'package:wearver_project/new_first_screen.dart';
+import 'package:wearver_project/param_screen.dart';
+import 'package:wearver_project/params_lib/account/confidentialité.dart';
+import 'package:wearver_project/params_lib/assistance/help_screen.dart';
+import 'package:wearver_project/params_lib/assistance/policy_screen.dart';
+import 'package:wearver_project/params_lib/assistance/problem_screen.dart';
+import 'package:wearver_project/params_lib/assistance/rules_screen.dart';
+import 'package:wearver_project/params_lib/assistance/suggest_screen.dart';
+import 'package:wearver_project/params_lib/info/info_delivery.dart';
+import 'package:wearver_project/password_help.dart';
+import 'package:wearver_project/register_screen.dart';
+import 'package:wearver_project/splash_screen.dart';
 
 void main() {
     runApp(MaterialApp(
@@ -29,40 +32,46 @@ void main() {
       ),
       title: 'Area',
       initialRoute: '/',
-      routes: {
-        '/Splash': (context) => const SplashScreen(),
-        '/': (context) => const FirstScreen(),
-        '/Login': (context) => const Login(),
-        '/Register': (context) => const Register(),
-        '/Home': (context) => const Home(),
-        '/Param':(context) => const Param(),
-        '/Param_help':(context) => const Param_help(),
-        '/Param_policy':(context) => const Param_policy(),
-        '/Param_rules':(context) => const Param_rules(),
-        '/Param_suggest':(context) => const Param_suggest(),
-        '/Param_problem':(context) => const Param_problem(),
-        '/PasswordHelp':(context) => const Password(),
-        '/Trend_new':(context) => const Trend_new(),
-        '/Trend_trend':(context) => const Trend_trend(),
-        '/Trend_street':(context) => const Trend_streetwear(),
-        '/Trend_art':(context) => const Trend_art(),
-        '/Trend_exo':(context) => const Trend_exotic(),
-        '/Trend_classic':(context) => const Trend_classic(),
-        '/Changepswd':(context) => const Passwordchange(),
+      routes: <String, WidgetBuilder>{
+        '/': (BuildContext context) => const NewFirstScreen(),
+        '/Delivery_data': (BuildContext context) => const Delivery_data(),
+        '/Owner' : (BuildContext context) => const Adminscreen(),
+        '/Splash': (BuildContext context) => const SplashScreen(),
+        '/first': (BuildContext context) => const FirstScreen(),
+        '/Login': (BuildContext context) => const Login(),
+        '/Register': (BuildContext context) => const Register(),
+        '/Home': (BuildContext context) => const Home(),
+        '/Param':(BuildContext context) => const Param(),
+        '/Param_help':(BuildContext context) => const Param_help(),
+        '/Param_policy':(BuildContext context) => const Param_policy(),
+        '/Param_rules':(BuildContext context) => const Param_rules(),
+        '/Param_suggest':(BuildContext context) => const Param_suggest(),
+        '/Param_problem':(BuildContext context) => const Param_problem(),
+        '/PasswordHelp':(BuildContext context) => const Password(),
+        '/Trend_new':(BuildContext context) => const Trend_new(),
+        '/Trend_trend':(BuildContext context) => const Trend_trend(),
+        '/Trend_street':(BuildContext context) => const Trend_streetwear(),
+        '/Trend_art':(BuildContext context) => const Trend_art(),
+        '/Trend_exo':(BuildContext context) => const Trend_exotic(),
+        '/Trend_classic':(BuildContext context) => const Trend_classic(),
+        '/Changepswd':(BuildContext context) => const Passwordchange(),
       },
-    ));
+    ),);
 }
 
+// ignore: public_member_api_docs
 class MyBehavior extends ScrollBehavior {
   @override
   Widget buildOverscrollIndicator(
-      BuildContext context, Widget child, ScrollableDetails details) {
+      BuildContext context, Widget child, ScrollableDetails details,) {
     return child;
   }
 }
 
+// ignore: public_member_api_docs
 class MyApp extends StatelessWidget {
-  const MyApp ({Key? key}) : super(key: key);
+  // ignore: public_member_api_docs
+  const MyApp ({super.key});
 
   @override
   Widget build(BuildContext context) {
