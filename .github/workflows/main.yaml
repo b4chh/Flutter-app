@@ -29,6 +29,6 @@ jobs:
       - name: Push to Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk"
+          artifacts: "front/build/app/outputs/flutter-apk/*.apk"
           token: ${{ secrets.SECRETS_APK }}
           tag: v0.0.3
