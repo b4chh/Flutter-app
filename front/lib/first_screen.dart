@@ -1,24 +1,44 @@
 // ignore_for_file: public_member_api_docs
 
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
-//import 'package:testing_flutter/login_google.dart';
 import 'package:wearver_project/global_lib.dart' as global;
 
 
 // ignore: always_specify_types
-Future<http.Response> makePostRequest(email, password) async {
-  final Uri url = Uri.parse('http://192.168.1.94:3000/auth/login?email=$email&password=$password');
-  final Map<String, String> headers = <String, String>{'Content-type': 'application/json'};
-  // final json = '{"email": "$email", "password": "$password"}';
-  // final response = await http.post(url, headers: headers, body: json);
-  final http.Response response = await http.post(url, headers: headers);
+// Future<http.Response> makePostRequest(email, password) async {
+//   final Uri url = Uri.parse('http://192.168.1.94:3000/auth/login?email=$email&password=$password');
+//   final Map<String, String> headers = <String, String>{'Content-type': 'application/json'};
+//   // final json = '{"email": "$email", "password": "$password"}';
+//   // final response = await http.post(url, headers: headers, body: json);
+//   final http.Response response = await http.post(url, headers: headers);
+//   return response;
+// }
+
+Future<http.Response> makePostRequest(String email, String password) async {
+  final Uri url = Uri.parse('https://api-weaver.onrender.com/auth/login');
+  final Map<String, String> headers = <String, String>{
+    'Content-type': 'application/json',
+  };
+
+  final Map<String, String> body = <String, String>{
+    'email': email,
+    'password': password,
+  };
+
+  final String jsonBody = jsonEncode(body);
+
+  final http.Response response = await http.post(
+    url,
+    headers: headers,
+    body: jsonBody,
+  );
+
   return response;
 }
-
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});

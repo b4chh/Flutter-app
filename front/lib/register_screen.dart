@@ -2,7 +2,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'dart:async';
-
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -28,10 +28,36 @@ class Register extends StatefulWidget {
 // }
 
 // ignore: always_specify_types
-Future<http.Response> makePostRequest(firstname, lastname, email, password, username) async {
-  final Uri url = Uri.parse('http://192.168.1.94:3000/auth/register?email=$email&password=$password&username=$username&firstName=$firstname&lastName=$lastname');
-  final Map<String, String> headers = <String, String>{'Content-type': 'application/json'};
-  final http.Response response = await http.post(url, headers: headers);
+// Future<http.Response> makePostRequest(firstname, lastname, email, password, username) async {
+//   final Uri url = Uri.parse('http://192.168.1.94:3000/auth/register?email=$email&password=$password&username=$username&firstName=$firstname&lastName=$lastname');
+//   final Map<String, String> headers = <String, String>{'Content-type': 'application/json'};
+//   final http.Response response = await http.post(url, headers: headers);
+//   return response;
+// }
+
+Future<http.Response> makePostRequest(String email, String password, String username, String firstName, String lastName, String role) async {
+  final Uri url = Uri.parse('https://api-weaver.onrender.com/auth/register');
+  final Map<String, String> headers = <String, String>{
+    'Content-type': 'application/json',
+  };
+
+  final Map<String, String> body = <String, String>{
+    'email': email,
+    'password': password,
+    'username': username,
+    'firstName': firstName,
+    'lastName': lastName,
+    'role': role,
+  };
+
+  final String jsonBody = jsonEncode(body);
+
+  final http.Response response = await http.post(
+    url,
+    headers: headers,
+    body: jsonBody,
+  );
+
   return response;
 }
 
@@ -208,9 +234,9 @@ class _RegisterPageState extends State<Register> {
                 && lastnamecontroller
             .text.isNotEmpty)
                  {
-                  final http.Response response = await makePostRequest(firsnamecontroller.text, lastnamecontroller
-              .text, myemailcontroller.text, mypasswordcontroller.text, usernamecontroller
-          .text,);
+                  final http.Response response = await makePostRequest(myemailcontroller.text, mypasswordcontroller.text, usernamecontroller
+          .text, firsnamecontroller.text, lastnamecontroller
+              .text, 'acheteur',);
                   // ignore: avoid_print
                   print(response.body);
                   // ignore: avoid_print
@@ -218,7 +244,7 @@ class _RegisterPageState extends State<Register> {
                   if (response.statusCode == 200) {
                     global.email = myemailcontroller.text;
                     // ignore: use_build_context_synchronously
-                    await Navigator.pushNamed(context, '/Home');
+                    Navigator.pop(context);
                   }
                   else {
                     // ignore: avoid_print

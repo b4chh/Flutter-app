@@ -6,8 +6,10 @@ import 'package:wearver_project/Trend_page_lib/trend_new.dart';
 import 'package:wearver_project/Trend_page_lib/trend_streetwear.dart';
 import 'package:wearver_project/Trend_page_lib/trend_trend.dart';
 import 'package:wearver_project/admin_log.dart';
+import 'package:wearver_project/adminhome.dart';
 import 'package:wearver_project/first_screen.dart';
 import 'package:wearver_project/home_screen.dart';
+import 'package:wearver_project/intro.dart';
 import 'package:wearver_project/login_screen.dart';
 import 'package:wearver_project/new_first_screen.dart';
 import 'package:wearver_project/param_screen.dart';
@@ -33,7 +35,9 @@ void main() {
       title: 'Area',
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
-        '/': (BuildContext context) => const NewFirstScreen(),
+        '/': (BuildContext context) => const IntroScreen(),
+        '/AfterIntro': (BuildContext context) => const NewFirstScreen(),
+        '/Adminhome':(BuildContext context) => const Adminhome(),
         '/Delivery_data': (BuildContext context) => const Delivery_data(),
         '/Owner' : (BuildContext context) => const Adminscreen(),
         '/Splash': (BuildContext context) => const SplashScreen(),

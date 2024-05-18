@@ -5,6 +5,7 @@ description: A new Flutter project.
 environment: 
   sdk: '>=2.19.6 <3.0.0'
 dependencies: 
+  animated_text_kit: ^4.2.2
   cupertino_icons: ^1.0.2
   custom_navigation_bar: ^0.8.2
   flutter: 
@@ -20,22 +21,22 @@ dev_dependencies:
   flutter_test: 
     sdk: flutter
 flutter_launcher_icons: 
-  image_path_android: assets/wearver_icon.jpg
-  image_path_ios: assets/wearver_icon.jpg
-  adaptive_icon_background: assets/wearver_icon.jpg
-  adaptive_icon_foreground: assets/wearver_icon.jpg
+  image_path_android: assets/logo.png
+  image_path_ios: assets/logo.png
+  adaptive_icon_background: assets/logo.png
+  adaptive_icon_foreground: assets/logo.png
   background_color_ios: '#544A56'
   web: 
-    image_path: assets/wearver_icon.jpg
+    image_path: assets/logo.png
     background_color: '#544A56'
     theme_color: '#544A56'
     generate: true
   windows: 
-    image_path: assets/wearver_icon.jpg
+    image_path: assets/logo.png
     generate: true
     icon_size: 48
   macos: 
-    image_path: assets/wearver_icon.jpg
+    image_path: assets/logo.png
     generate: true
   android: true
   ios: true

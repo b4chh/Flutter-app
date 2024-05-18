@@ -11,8 +11,10 @@ class NewFirstScreen extends StatefulWidget {
 }
 
 class _NewFirstScreen extends State<NewFirstScreen> {
+  bool selected = false;
   final ButtonStyle style =
         ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
+
   @override
   Widget build(BuildContext context) {
     // final ButtonStyle style =

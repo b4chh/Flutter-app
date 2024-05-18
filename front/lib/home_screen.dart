@@ -321,7 +321,7 @@ class PageHome extends StatelessWidget {
       const SizedBox(height: 30),
       const Padding(
         padding: EdgeInsets.only(right: 75),
-        child:  Text('Créateurs tendances', style: TextStyle(fontSize: 27, fontFamily: 'Apple',color: Color.fromARGB(255, 21, 21, 21),letterSpacing: 0.001,),),
+        child:  Text('Créations tendances', style: TextStyle(fontSize: 27, fontFamily: 'Apple',color: Color.fromARGB(255, 21, 21, 21),letterSpacing: 0.001,),),
         ),
       Container(
           margin: const EdgeInsets.symmetric(vertical: 10),
